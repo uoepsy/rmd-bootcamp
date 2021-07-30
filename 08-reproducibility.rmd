@@ -1,0 +1,13 @@
+---
+title: "Reproducibility"
+---
+
+# random seeds
+
+# making data available on OSF
+
+
+
+
+
+

@@ -1,0 +1,17 @@
+---
+title: "Making Pretty Tables in RMarkdown"
+---
+
+
+
+# kable()
+
+pass pretty much anything to knitr::kable()
+
+# gt package
+
+link to gt
+
+
+
+

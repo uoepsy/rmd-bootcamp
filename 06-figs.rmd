@@ -1,0 +1,19 @@
+---
+title: "Plots & Figures in RMarkdown"
+---
+
+
+# width and height
+
+# captions
+
+# external images
+
+knitr::include_graphics()
+
+
+
+## Readings
+
+For further information, check to the following:
+

@@ -1,0 +1,20 @@
+---
+title: "Inline R Code in RMarkdown"
+---
+
+
+# What is Inline R Code?
+
+## Why is it useful?
+
+# Tips for writing inline code
+
+making an object, round prior.
+
+
+
+
+## Readings
+
+For further information, check to the following:
+

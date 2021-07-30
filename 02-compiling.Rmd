@@ -1,0 +1,24 @@
+---
+title: "Compiling RMarkdown Documents"
+---
+
+
+# Compiling a Document ("Knit")
+
+to html
+to word
+to pdf
+
+
+
+# Compiling and Sessions/Environments
+
+ does so in a self-contained enviroment/session - ensures reproducibility
+
+
+
+
+## Readings
+
+For further information, check to the following:
+

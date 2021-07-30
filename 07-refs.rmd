@@ -1,0 +1,17 @@
+---
+title: "Referencing in RMarkdown"
+---
+
+
+
+
+# Referencing a figure 
+
+- bookdown::html_document2/pdf_document2
+- chunk name
+-  at ref (chunk-name)
+
+
+# Referencing a table
+
+
