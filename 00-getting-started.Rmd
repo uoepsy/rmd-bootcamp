@@ -31,20 +31,20 @@ If you approach the material with an inquisitive attitude, it will be easier to 
 ## Experience with R/Rstudio 
 
 This course assumes that the reader has had some experience of using RStudio and programming in R. 
-For an indicator, we will assume that the reader understands what these lines of code will do. 
+For an indicator, we will assume that the reader understands what these lines of code will do.  
 
-```{r eval=F}
+```{r echo=T,eval=F}
 mydata <- read_csv("")
 with(mydata, table(x, g))
 plot(mydata$y ~ mydata$x)
-
+# more to be added once rest of course is written
 ```
 
-you should be familiar with the general set up of RStudio
-```{r echo=FALSE}
+We also assume that the reader is familiar with the general setup of the RStudio IDE (Figure \@ref(fig:ide)).  
+Writing in RMarkdown is similar to writing in an R Script - it involves writing code in the Editor pane, which can then be sent to the Console to be evaluated. The only difference is the addition of the written text component in the file we have open in the Editor. 
+
+```{r ide, echo=FALSE, fig.cap="RStudio Interface"}
 knitr::include_graphics("images/rstudio-panes.png")
 ```
 
 
-
-## Readings

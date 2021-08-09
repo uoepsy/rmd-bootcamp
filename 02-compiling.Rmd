@@ -10,12 +10,19 @@ to word
 to pdf
 
 
+4. Try *compiling* your document into a **.html** document, by clicking the "knit" button at the top left of your editor. 
+  - It will ask you to save the **.Rmd** file somewhere first. 
+  - Note where this **.html** file is saved on your computer - it is in the same folder where you just saved the **.Rmd**. You will probably be able to find it in the Files tab in Rstudio (bottom right window). 
+5. You should now have **TWO** files on your computer with the same name but one is an **.Rmd** and one is a **.html**. You could email the **.html** file to someone and they could open it in their web browser. The **.Rmd** file can only be opened and understood by someone who has access to R. 
 
 # Compiling and Sessions/Environments
 
  does so in a self-contained enviroment/session - ensures reproducibility
 
 
+# Error messages
+- common error messages
+- 
 
 
 ## Readings

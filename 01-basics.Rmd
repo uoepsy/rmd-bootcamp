@@ -3,7 +3,7 @@ title: "Basics of RMarkdown"
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = TRUE, fig.align="center")
 ```
 
 ```{r panelset, echo=FALSE}
@@ -26,7 +26,7 @@ xaringanExtra::use_panelset()
 
 
 
-## What's the point?
+## What's the point of RMarkdown?
 
 Rmarkdown documents combine the analytical power of R and the utility of a text-processor. 
 We can have one document which contains all of our analysis as well as our written text, and can be _compiled_ into a nicely formatted report. This saves us doing analysis in R and copying results across to Microsoft Word. It ensures our report accurately reflects our analysis. Everything that you're reading now has all been written in Rmarkdown!
@@ -38,7 +38,7 @@ knitr::include_graphics("images/rmdworkflow.png")
 ```
 
 
-# Knitting a script
+## Knitting a script
 
 To show the general process of going from something that we edit and evaluate in R using RStudio, to something more like a read-only document, it is worth first exploring how we can turn any R script into an __.html__ or __.pdf__ 
 
@@ -49,30 +49,93 @@ Step 3. In the **console**, type `knitr::spin("insert-your-filepath-here.R")` an
 
 
 
-# Getting Started
+## Getting Started
 
 First things first, we need to open an RMarkdown document.  
 
 In the top menu bar, click on **File > New File > RMarkdown**  
 A dialgue box will pop-up 
 
+[insert video]
 
-# yaml
+## yaml
 
 The bit at the top of your document between the three dashes `---` is the *"metadata"*. This is the information **about** your document. Things like the title, author, output format (html/pdf). For now, we can leave it as it is, but there are lots and lots of features you can exploit via the yaml, such as including stylesheets for html (which is how we set the colours/fonts etc in these pages), to setting custom parameters which enable you to bulk create multiple reports for different values (e.g. a different report on each country in a list). We won't cover this sort of stuff in this course as it is not so useful for producing scientific reports, but once you are an RMarkdown pro, if you get interested in this sort of thing there is lots of info at https://bookdown.org/yihui/rmarkdown/params-knit.html.  
 
 We will come back to editing the yaml a little bit in [Chapter 7](07-refs.html), but for now we can leave it as it is, having been automatically generated based on the author and title we gave the little pop-up box. 
 
-# Text and Code-Chunks
+[insert video]
+Make sure you follow along with the video
+
+
+## Text and Code-Chunks
+
+
+::: {.panelset}
+
+::: {.panel}
+#### Writing Text 
+
+As mentioned, RMarkdown is a format in which we can write both code **and** text. It has lots of useful advantages - you can write in such a way that if your data or analysis changes, then your results, plots and tables will automatically update to reflect these changes. 
+
+Writing text involves formatting your words in plain-text "markdown". There are a few rules to get to grips with, but it is fairly straightforward to start typing your paragraph in your document. 
+We use the # symbol to denote a section heading (with ## being a subsection, and ### being subsubsection, and so on.). Bold text is made by wrapping a sentence in two asterisks `**`, or two underscores `__`, and italic text is made by wrapping it in one `*` or `_`. 
+
+[insert video, writing some text. using a header. writing bold]
+
+```{r md, echo=FALSE, out.width="700px", fig.cap="Writing in Markdown (from https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf)"}
+knitr::include_graphics("images/md.png")
+```
+
+:::
+
+::: {.panel}
+#### Adding Code-Chunks  
+
+As shown in Figure \@ref(fig:chunk), We include code-chunks by using three backticks `r ''```` followed by squiggly brackets with "r" in them {r}, to specify in the document that this is R code (we can actually also include other programming languages!). We then end the code chunk with three backticks again. Everything between these backticks will get evaluated as a chunk of R code, and things outside these chunks will be considered text. 
+
+```{r chunk, echo=F, out.width="700px", fig.cap="This is a code-chunk"}
+knitr::include_graphics("images/chunk.png")
+```
+
+There are a couple of short cuts for adding a new code-chunk. Either of the options below will create a code-chunk wherever your cursor is in the document at that time. 
+
+1. At the top-right of your document, there will be a set of icons. One of these is a little "c" inside a box with a plus in the corner. Click this and choose R from the menu.
+![](images/chunkicon.png)
+2. Type **Ctrl+Alt+i** on your keyboard ( **Cmd+Opt+i** for Mac).
+
+:::
+
+:::
 
 
 
-# Headings
+## Running Code 
+
+There are various ways you can send code from your RMarkdown document to the console to be evaluated.  
+
+```{r chunk2, echo=F, out.width="700px", fig.cap="Running code chunks"}
+knitr::include_graphics("images/chunk2.png")
+```
+
+#### Running the line of code under the cursor
+
+As with an R Script, when your cursor is on a line of R code, you can type __Ctrl+Enter__ ( __Cmd+Enter__ for Mac users) to evaluate that line of code. The cursor will automatically move down to the next line of code, so you can keep pressing your keyboard to run lines sequentially. Alternatively, in the top-right of your document you can press the run icon ![](images/runicon.png) and choose to run the selected line.  
+
+You can also highlight lines to run them together. 
+
+[insert video]
 
 
+#### Running a chunk of code
+
+The little green arrow ![](images/runchunkicon.png) at the top right of the code-chunk allows you to run that whole code-chunk. 
+
+[insert video]
+
+#### Running all code-chunks above the current code-chunk
+
+The little downwards arrow ![](images/runaboveicon.png) enables you to run all the code-chunks above that code-chunk. This is useful to do a quick refresh of your analysis process up to that point. 
 
 
-## Readings
-
-For further information, check to the following:
-
+[insert video]

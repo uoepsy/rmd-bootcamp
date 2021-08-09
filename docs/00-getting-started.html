@@ -2415,15 +2415,17 @@ Lessons
 <span class="down-arrow">&#x25BE;</span>
 </button>
 <div class="nav-dropdown-content">
-<a href="(01-basics.html)">L1: The basics of RMarkdown</a>
-<a href="(02-compiling.html)">L2: Compiling Documents</a>
-<a href="(03-inline.html)">L3: Inline R Code</a>
-<a href="(04-prettytab.html)">L4: Making Pretty Tables</a>
+<a href="00-getting_started.html">L0: Getting Started</a>
+<a href="01-basics.html">L1: The basics of RMarkdown</a>
+<a href="02-compiling.html">L2: Compiling Documents</a>
+<a href="03-inline.html">L3: Inline R Code</a>
+<a href="04-prettytab.html">L4: Making Pretty Tables</a>
 <hr/>
-<a href="(05-echoeval.html)">L5: Hiding Code, Hiding Output</a>
-<a href="(06-figs.html)">L6: Plots &amp; Figures</a>
-<a href="(07-refs.html)">L7: Referencing</a>
-<a href="(08-packs.html)">L8: Useful Packages</a>
+<a href="05-echoeval.html">L5: Hiding Code, Hiding Output</a>
+<a href="06-figs.html">L6: Plots &amp; Figures</a>
+<a href="07-refs.html">L7: Referencing</a>
+<a href="08-reproducibility.html">L8: Reproducibility</a>
+<a href="zz-packs.html">Useful Packages</a>
 </div>
 </div>
 <a href="javascript:void(0);" class="nav-toggle">&#9776;</a>
@@ -2473,11 +2475,23 @@ If you approach the material with an inquisitive attitude, it will be easier to 
 <h2 id="experience-with-rrstudio">Experience with R/Rstudio</h2>
 <p>This course assumes that the reader has had some experience of using RStudio and programming in R. For an indicator, we will assume that the reader understands what these lines of code will do.</p>
 <div class="layout-chunk" data-layout="l-body">
-
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>mydata</span> <span class='op'>&lt;-</span> <span class='fu'>read_csv</span><span class='op'>(</span><span class='st'>""</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/with.html'>with</a></span><span class='op'>(</span><span class='va'>mydata</span>, <span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>g</span><span class='op'>)</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>mydata</span><span class='op'>$</span><span class='va'>y</span> <span class='op'>~</span> <span class='va'>mydata</span><span class='op'>$</span><span class='va'>x</span><span class='op'>)</span>
+<span class='co'># more to be added once rest of course is written</span>
+</code></pre>
 </div>
-you should be familiar with the general set up of RStudio
+</div>
+<p>We also assume that the reader is familiar with the general setup of the RStudio IDE (Figure <a href="#fig:ide">1</a>).<br />
+Writing in RMarkdown is similar to writing in an R Script - it involves writing code in the Editor pane, which can then be sent to the Console to be evaluated. The only difference is the addition of the written text component in the file we have open in the Editor.</p>
 <div class="layout-chunk" data-layout="l-body">
-<p><img src="images/rstudio-panes.png" width="804" style="display: block; margin: auto;" /></p>
+<div class="figure" style="text-align: center"><span id="fig:ide"></span>
+<img src="images/rstudio-panes.png" alt="RStudio Interface" width="804" />
+<p class="caption">
+Figure 1: RStudio Interface
+</p>
+</div>
 </div>
 <h2 id="readings">Readings</h2>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
