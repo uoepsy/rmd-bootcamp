@@ -2373,6 +2373,8 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   }</style>
   <!--/radix_placeholder_distill-->
   <script src="site_libs/header-attrs-2.8/header-attrs.js"></script>
+  <link href="site_libs/panelset-0.2.6/panelset.css" rel="stylesheet" />
+  <script src="site_libs/panelset-0.2.6/panelset.js"></script>
   <script src="site_libs/popper-2.6.0/popper.min.js"></script>
   <link href="site_libs/tippy-6.2.7/tippy.css" rel="stylesheet" />
   <link href="site_libs/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
@@ -2413,7 +2415,7 @@ Lessons
 <span class="down-arrow">&#x25BE;</span>
 </button>
 <div class="nav-dropdown-content">
-<a href="00-getting_started.html">L0: Getting Started</a>
+<a href="00-getting-started.html">L0: Getting Started</a>
 <a href="01-basics.html">L1: The basics of RMarkdown</a>
 <a href="02-compiling.html">L2: Compiling Documents</a>
 <a href="03-inline.html">L3: Inline R Code</a>
@@ -2447,23 +2449,58 @@ Lessons
 <nav class="l-text toc figcaption" id="TOC">
 <h3>Contents</h3>
 <ul>
-<li><a href="#what-is-inline-r-code">What is Inline R Code?</a>
-<ul>
-<li><a href="#why-is-it-useful">Why is it useful?</a></li>
-</ul></li>
-<li><a href="#tips-for-writing-inline-code">Tips for writing inline code</a>
-<ul>
-<li><a href="#readings">Readings</a></li>
-</ul></li>
+<li><a href="#what-is-inline-r-code-and-why-should-we-use-it">What is inline R code and why should we use it?</a></li>
+<li><a href="#example">Example</a></li>
+<li><a href="#tips-for-writing-inline-code">Tips for writing inline code</a></li>
 </ul>
 </nav>
 </div>
-<h1 id="what-is-inline-r-code">What is Inline R Code?</h1>
-<h2 id="why-is-it-useful">Why is it useful?</h2>
-<h1 id="tips-for-writing-inline-code">Tips for writing inline code</h1>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<style type="text/css">
+.spc code{
+  font-size: .8em !important;
+  background-color: #eaeaea;
+}
+.spc{
+  font-size: .9em !important;
+}
+</style>
+</div>
+<h2 id="what-is-inline-r-code-and-why-should-we-use-it">What is inline R code and why should we use it?</h2>
+<p>What is Inline R Code? why use it</p>
+<h2 id="example">Example</h2>
+<div class="panelset">
+<section id="writing-like-this" class="panel">
+<h4>Writing like this</h4>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://tidyverse.tidyverse.org'>tidyverse</a></span><span class='op'>)</span>
+<span class='va'>pass_scores</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/utils/read.table.html'>read.csv</a></span><span class='op'>(</span><span class='st'>"https://edin.ac/2wJgYwL"</span><span class='op'>)</span> 
+<span class='va'>res2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/t.test.html'>t.test</a></span><span class='op'>(</span><span class='va'>pass_scores</span><span class='op'>$</span><span class='va'>PASS</span>, mu <span class='op'>=</span> <span class='fl'>33</span>, alternative <span class='op'>=</span> <span class='st'>"less"</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<div class="spc">
+<p>A one-sided one-sample t-test was conducted in order to determine if the average score on the Procrastination Assessment Scale for Students (PASS) for a sample of <code>`r nrow(pass_scores)`</code> students at Edinburgh University was significantly lower ($\alpha = .05$) than the average score obtained during development of the PASS.</p>
+<p>Edinburgh University students scored lower (Mean = <code>`r mean(pass_scores$PASS) %&gt;% round(2)`</code>, SD = <code>`r sd(pass_scores$PASS) %&gt;% round(2)`</code>) than the score reported by the authors of the PASS (Mean = 33). This difference was statistically significant (t(<code>`r nrow(pass_scores)-1`</code>) = <code>`r res2$statistic %&gt;% round(2)`</code>, p &lt; .05, one-tailed).</p>
+</div>
+</section>
+<section id="compiles-to-look-like-this" class="panel">
+<h4>Compiles to look like this!</h4>
+<p>A one-sided one-sample t-test was conducted in order to determine if the average score on the Procrastination Assessment Scale for Students (PASS) for a sample of 20 students at Edinburgh University was significantly lower (<span class="math inline">\(\alpha = .05\)</span>) than the average score obtained during development of the PASS.</p>
+<p>Edinburgh University students scored lower (Mean = 30.7, SD = 3.31) than the score reported by the authors of the PASS (Mean = 33). This difference was statistically significant (t(19)=-3.11, p &lt; .05, one-tailed).</p>
+</section>
+</div>
+<h2 id="tips-for-writing-inline-code">Tips for writing inline code</h2>
 <p>making an object, round prior.</p>
-<h2 id="readings">Readings</h2>
-<p>For further information, check to the following:</p>
+<ul>
+<li>the code chunk saves the results of the <code>t.test()</code> function as a named object <code>res2</code>.</li>
+<li>in text, the backticks <code>`r … … … `</code> are used to execute small bits of R code, and include the output within the text. For instance, the line <code>`r res2$statistic %&gt;% round(2)`</code> gets the t-statistic from the results, and rounds it to 2 decimal places, which get’s printed out as -3.11.</li>
+<li>the bits between the dollar signs, e.g. $\alpha$ will get printed as mathematical symbols such as <span class="math inline">\(\alpha\)</span>.</li>
+</ul>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
@@ -2472,6 +2509,15 @@ Lessons
 <div class="d-appendix">
 </div>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 
 <!--radix_placeholder_site_after_body-->
 <!--/radix_placeholder_site_after_body-->

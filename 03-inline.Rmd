@@ -2,19 +2,69 @@
 title: "Inline R Code in RMarkdown"
 ---
 
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(fig.align = 'center')
+```
 
-# What is Inline R Code?
+```{r panelset, echo=FALSE}
+xaringanExtra::use_panelset()
+```
 
-## Why is it useful?
+```{css echo=FALSE}
+.spc code{
+  font-size: .8em !important;
+  background-color: #eaeaea;
+}
+.spc{
+  font-size: .9em !important;
+}
+```
 
-# Tips for writing inline code
+## What is inline R code and why should we use it?
+
+What is Inline R Code?
+why use it
+
+## Example
+
+
+::: {.panelset}
+
+::: {.panel}
+#### Writing like this 
+
+```{r}
+library(tidyverse)
+pass_scores <- read.csv("https://edin.ac/2wJgYwL") 
+res2 <- t.test(pass_scores$PASS, mu = 33, alternative = "less")
+```
+
+<div class="spc">
+A one-sided one-sample t-test was conducted in order to determine if the average score on the Procrastination Assessment Scale for Students (PASS) for a sample of <code>&grave;r nrow(pass_scores)&grave;</code> students at Edinburgh University was significantly lower (\$\\alpha = .05\$) than the average score obtained during development of the PASS. 
+
+Edinburgh University students scored lower (Mean = <code>&grave;r mean(pass_scores\$PASS) %>% round(2)&grave;</code>, SD = <code>&grave;r sd(pass_scores\$PASS) %>% round(2)&grave;</code>) than the score reported by the authors of the PASS (Mean = 33). This difference was statistically significant (t(<code>&grave;r nrow(pass_scores)-1&grave;</code>) = <code>&grave;r res2$statistic %>% round(2)&grave;</code>, p < .05, one-tailed).  
+</div>
+
+:::
+
+::: {.panel}
+#### Compiles to look like this!  
+
+A one-sided one-sample t-test was conducted in order to determine if the average score on the Procrastination Assessment Scale for Students (PASS) for a sample of `r nrow(pass_scores)` students at Edinburgh University was significantly lower ($\alpha = .05$) than the average score obtained during development of the PASS. 
+
+Edinburgh University students scored lower (Mean = `r mean(pass_scores$PASS) %>% round(2)`, SD = `r sd(pass_scores$PASS) %>% round(2)`) than the score reported by the authors of the PASS (Mean = 33). This difference was statistically significant (t(`r nrow(pass_scores)-1`)=`r res2$statistic %>% round(2)`, p < .05, one-tailed).  
+
+:::
+
+:::
+
+
+## Tips for writing inline code
 
 making an object, round prior.
 
+  - the code chunk saves the results of the `t.test()` function as a named object `res2`.
+  - in text, the backticks <code>&grave;r ... ... ... &grave;</code> are used to execute small bits of R code, and include the output within the text. For instance, the line <code>&grave;r res2\$statistic %>% round(2)&grave;</code> gets the t-statistic from the results, and rounds it to 2 decimal places, which get's printed out as `r res2[["statistic"]] %>% round(2)`. 
+  - the bits between the dollar signs, e.g. \$\\alpha\$ will get printed as mathematical symbols such as $\alpha$. 
 
-
-
-## Readings
-
-For further information, check to the following:
 

@@ -2415,7 +2415,7 @@ Lessons
 <span class="down-arrow">&#x25BE;</span>
 </button>
 <div class="nav-dropdown-content">
-<a href="00-getting_started.html">L0: Getting Started</a>
+<a href="00-getting-started.html">L0: Getting Started</a>
 <a href="01-basics.html">L1: The basics of RMarkdown</a>
 <a href="02-compiling.html">L2: Compiling Documents</a>
 <a href="03-inline.html">L3: Inline R Code</a>
@@ -2452,7 +2452,6 @@ Lessons
 <li><a href="#prelude">Prelude</a></li>
 <li><a href="#what-you-need">What you need</a></li>
 <li><a href="#experience-with-rrstudio">Experience with R/Rstudio</a></li>
-<li><a href="#readings">Readings</a></li>
 </ul>
 </nav>
 </div>
@@ -2473,13 +2472,17 @@ Just reading the material won’t be enough, you need to type along the code and
 If you approach the material with an inquisitive attitude, it will be easier to learn.</li>
 </ol>
 <h2 id="experience-with-rrstudio">Experience with R/Rstudio</h2>
-<p>This course assumes that the reader has had some experience of using RStudio and programming in R. For an indicator, we will assume that the reader understands what these lines of code will do.</p>
+<p>This course assumes that the reader has had some experience of using RStudio and programming in R. For an indicator, we will assume that the reader is familiar with the code below and understands what each line will do.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>mydata</span> <span class='op'>&lt;-</span> <span class='fu'>read_csv</span><span class='op'>(</span><span class='st'>""</span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/base/with.html'>with</a></span><span class='op'>(</span><span class='va'>mydata</span>, <span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>g</span><span class='op'>)</span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>mydata</span><span class='op'>$</span><span class='va'>y</span> <span class='op'>~</span> <span class='va'>mydata</span><span class='op'>$</span><span class='va'>x</span><span class='op'>)</span>
-<span class='co'># more to be added once rest of course is written</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://tidyverse.tidyverse.org'>tidyverse</a></span><span class='op'>)</span>
+<span class='va'>pass_scores</span> <span class='op'>&lt;-</span> <span class='fu'>read_csv</span><span class='op'>(</span><span class='st'>"https://edin.ac/2wJgYwL"</span><span class='op'>)</span> 
+<span class='fu'><a href='https://rdrr.io/r/stats/t.test.html'>t.test</a></span><span class='op'>(</span><span class='va'>pass_scores</span><span class='op'>$</span><span class='va'>PASS</span>, mu <span class='op'>=</span> <span class='fl'>33</span>, alternative <span class='op'>=</span> <span class='st'>"less"</span><span class='op'>)</span>
+<span class='va'>pass_scores</span> <span class='op'>%&gt;%</span> <span class='fu'>group_by</span><span class='op'>(</span><span class='va'>school</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>summarise</span><span class='op'>(</span>
+    meanPASS <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>PASS</span><span class='op'>)</span>,
+    sdPASS <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/sd.html'>sd</a></span><span class='op'>(</span><span class='va'>PASS</span><span class='op'>)</span>
+  <span class='op'>)</span>
 </code></pre>
 </div>
 </div>
@@ -2493,7 +2496,6 @@ Figure 1: RStudio Interface
 </p>
 </div>
 </div>
-<h2 id="readings">Readings</h2>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->

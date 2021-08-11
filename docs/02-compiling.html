@@ -2373,6 +2373,8 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   }</style>
   <!--/radix_placeholder_distill-->
   <script src="site_libs/header-attrs-2.8/header-attrs.js"></script>
+  <link href="site_libs/panelset-0.2.6/panelset.css" rel="stylesheet" />
+  <script src="site_libs/panelset-0.2.6/panelset.js"></script>
   <script src="site_libs/popper-2.6.0/popper.min.js"></script>
   <link href="site_libs/tippy-6.2.7/tippy.css" rel="stylesheet" />
   <link href="site_libs/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
@@ -2413,7 +2415,7 @@ Lessons
 <span class="down-arrow">&#x25BE;</span>
 </button>
 <div class="nav-dropdown-content">
-<a href="00-getting_started.html">L0: Getting Started</a>
+<a href="00-getting-started.html">L0: Getting Started</a>
 <a href="01-basics.html">L1: The basics of RMarkdown</a>
 <a href="02-compiling.html">L2: Compiling Documents</a>
 <a href="03-inline.html">L3: Inline R Code</a>
@@ -2447,26 +2449,78 @@ Lessons
 <nav class="l-text toc figcaption" id="TOC">
 <h3>Contents</h3>
 <ul>
-<li><a href="#compiling-a-document-knit">Compiling a Document (“Knit”)</a></li>
+<li><a href="#what-does-it-mean-to-compile-a-document">What does it mean to “compile” a document?</a></li>
+<li><a href="#compiled-files">Compiled Files</a></li>
 <li><a href="#compiling-and-sessionsenvironments">Compiling and Sessions/Environments</a></li>
-<li><a href="#error-messages">Error messages</a>
-<ul>
-<li><a href="#readings">Readings</a></li>
-</ul></li>
+<li><a href="#related-error-messages">Related error messages</a></li>
 </ul>
 </nav>
 </div>
-<h1 id="compiling-a-document-knit">Compiling a Document (“Knit”)</h1>
-<p>to html to word to pdf</p>
-<h1 id="compiling-and-sessionsenvironments">Compiling and Sessions/Environments</h1>
-<p>does so in a self-contained enviroment/session - ensures reproducibility</p>
-<h1 id="error-messages">Error messages</h1>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<h2 id="what-does-it-mean-to-compile-a-document">What does it mean to “compile” a document?</h2>
+<div class="layout-chunk" data-layout="l-body">
+<div class="figure" style="text-align: center"><span id="fig:render"></span>
+<img src="images/render.png" alt="Rendering (from https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf)" width="308" />
+<p class="caption">
+Figure 1: Rendering (from <a href="https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf" class="uri">https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf</a>)
+</p>
+</div>
+</div>
+<p>Often, when talking about “compiling” RMarkdown documents, you will find different words used for this process, such as “compiling”, “rendering”, and “knitting”.</p>
+<p>The basic idea is that we are turning the <strong>.rmd</strong> file we are editing in RStudio into something much more reader-friendly, such as a <strong>.pdf</strong>, or an <strong>.html</strong>, or even a word file <strong>.docx</strong>.</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="images/kniticon.png" width="75px" style="display: block; margin: auto auto auto 0;" /></p>
+</div>
+<p>If you open up the <strong>.rmd</strong> file from <a href="01-basics.html">Lesson 1</a>, and click the “knit” icon at the top of the document, you see lots of stuff happening below, and then a nicely formatted document will pop-up.</p>
+<p>[insert video]</p>
+<div class="rtip">
+<p>You may find that the document pops up in a separate window, or in the “viewer” pane in the bottom right of RStudio.<br />
+You can control this behaviour by looking in the top menu of RStudio for <strong>“Tools” &gt; “Global Options” &gt; “RMarkdown” &gt; “Show output preview in:”</strong>.</p>
+</div>
+<h2 id="compiled-files">Compiled Files</h2>
 <ul>
-<li>common error messages</li>
+<li><p>if not saved already, it will ask.</p></li>
+<li><p>if saved. then it will go ahead</p></li>
+<li><p>the compiled doc (html/pdf) will be in the same folder as where you saved your .rmd file.</p></li>
+<li><p>you can find this in the Files tab of RStudio</p></li>
+<li><p>or in a file browser.</p></li>
+<li><p>You should now have <strong>TWO</strong> files on your computer with the same name but one is an <strong>.Rmd</strong> and one is a <strong>.html</strong>. You could email the <strong>.html</strong> file to someone and they could open it in their web browser. The <strong>.Rmd</strong> file can only be opened and understood by someone who has access to R.</p></li>
+</ul>
+<h2 id="compiling-and-sessionsenvironments">Compiling and Sessions/Environments</h2>
+<ul>
+<li>when a document gets knitted, it is a self-contained process.</li>
+<li>everything needs to be in the document</li>
+</ul>
+<p>does so in a self-contained enviroment/session - ensures reproducibility</p>
+<p>the following video provides an explanation peppapig &lt;- 4 peppapig * 12 compile = yes</p>
+<p>delete peppapig assignment compile = no</p>
+<p>kermit_inthe_console &lt;- 320 environment contains kermit kermit_inrmd compile = no</p>
+<p>where is rmd looking for objects, if not the environment? its own environment!</p>
+<ul>
+<li>because of this, there is a typical structure</li>
+</ul>
+<table>
+<tbody>
+<tr class="odd">
+<td>title</td>
+</tr>
+<tr class="even">
+<td>author</td>
+</tr>
+<tr class="odd">
+<td>yaml yaml yaml</td>
+</tr>
+</tbody>
+</table>
+<p>chunk1 = setup. load all required packages *don’t call install.packages here - or it will reinstall the package every time you knit. load data</p>
+<p>chunks2-n = analysis, plots etc,</p>
+<h2 id="related-error-messages">Related error messages</h2>
+<ul>
+<li>object not defined</li>
 <li></li>
 </ul>
-<h2 id="readings">Readings</h2>
-<p>For further information, check to the following:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->

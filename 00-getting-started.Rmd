@@ -31,13 +31,17 @@ If you approach the material with an inquisitive attitude, it will be easier to 
 ## Experience with R/Rstudio 
 
 This course assumes that the reader has had some experience of using RStudio and programming in R. 
-For an indicator, we will assume that the reader understands what these lines of code will do.  
+For an indicator, we will assume that the reader is familiar with the code below and understands what each line will do.  
 
 ```{r echo=T,eval=F}
-mydata <- read_csv("")
-with(mydata, table(x, g))
-plot(mydata$y ~ mydata$x)
-# more to be added once rest of course is written
+library(tidyverse)
+pass_scores <- read_csv("https://edin.ac/2wJgYwL") 
+t.test(pass_scores$PASS, mu = 33, alternative = "less")
+pass_scores %>% group_by(school) %>%
+  summarise(
+    meanPASS = mean(PASS),
+    sdPASS = sd(PASS)
+  )
 ```
 
 We also assume that the reader is familiar with the general setup of the RStudio IDE (Figure \@ref(fig:ide)).  

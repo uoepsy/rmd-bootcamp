@@ -3,29 +3,90 @@ title: "Compiling RMarkdown Documents"
 ---
 
 
-# Compiling a Document ("Knit")
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(fig.align = 'center')
+```
 
-to html
-to word
-to pdf
-
-
-4. Try *compiling* your document into a **.html** document, by clicking the "knit" button at the top left of your editor. 
-  - It will ask you to save the **.Rmd** file somewhere first. 
-  - Note where this **.html** file is saved on your computer - it is in the same folder where you just saved the **.Rmd**. You will probably be able to find it in the Files tab in Rstudio (bottom right window). 
-5. You should now have **TWO** files on your computer with the same name but one is an **.Rmd** and one is a **.html**. You could email the **.html** file to someone and they could open it in their web browser. The **.Rmd** file can only be opened and understood by someone who has access to R. 
-
-# Compiling and Sessions/Environments
-
- does so in a self-contained enviroment/session - ensures reproducibility
+```{r panelset, echo=FALSE}
+xaringanExtra::use_panelset()
+```
 
 
-# Error messages
-- common error messages
+## What does it mean to "compile" a document?
+
+```{r render, echo=FALSE, fig.cap="Rendering (from https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf)"}
+knitr::include_graphics("images/render.png")
+```
+
+Often, when talking about "compiling" RMarkdown documents, you will find different words used for this process, such as "compiling", "rendering", and "knitting".  
+
+The basic idea is that we are turning the **.rmd** file we are editing in RStudio into something much more reader-friendly, such as a **.pdf**, or an **.html**, or even a word file **.docx**. 
+
+```{r echo=F, fig.align="left", out.width="75px"}
+knitr::include_graphics("images/kniticon.png")
+```
+If you open up the **.rmd** file from [Lesson 1](01-basics.html), and click the "knit" icon at the top of the document, you see lots of stuff happening below, and then a nicely formatted document will pop-up. 
+
+[insert video]
+
+:::rtip
+You may find that the document pops up in a separate window, or in the "viewer" pane in the bottom right of RStudio.  
+You can control this behaviour by looking in the top menu of RStudio for __"Tools" > "Global Options" > "RMarkdown" > "Show output preview in:"__. 
+
+:::
+
+## Compiled Files
+
+- if not saved already, it will ask.
+- if saved. then it will go ahead
+
+- the compiled doc (html/pdf) will be in the same folder as where you saved your .rmd file. 
+- you can find this in the Files tab of RStudio
+- or in a file browser.
+- You should now have **TWO** files on your computer with the same name but one is an **.Rmd** and one is a **.html**. You could email the **.html** file to someone and they could open it in their web browser. The **.Rmd** file can only be opened and understood by someone who has access to R. 
+
+## Compiling and Sessions/Environments
+
+- when a document gets knitted, it is a self-contained process.
+- everything needs to be in the document
+
+does so in a self-contained enviroment/session - ensures reproducibility
+
+the following video provides an explanation
+peppapig <- 4
+peppapig * 12
+compile = yes
+
+delete peppapig assignment
+compile = no
+
+kermit_inthe_console <- 320
+environment contains kermit
+kermit_inrmd 
+compile = no
+
+where is rmd looking for objects, if not the environment? 
+its own environment! 
+
+
+
+- because of this, there is a typical structure
+
+---
+title
+author
+yaml yaml yaml
+---
+
+chunk1 = setup. 
+load all required packages
+*don't call install.packages here - or it will reinstall the package every time you knit.
+load data
+
+chunks2-n = analysis, plots etc,
+
+
+## Related error messages
+
+- object not defined
 - 
-
-
-## Readings
-
-For further information, check to the following:
-

@@ -2415,7 +2415,7 @@ Lessons
 <span class="down-arrow">&#x25BE;</span>
 </button>
 <div class="nav-dropdown-content">
-<a href="00-getting_started.html">L0: Getting Started</a>
+<a href="00-getting-started.html">L0: Getting Started</a>
 <a href="01-basics.html">L1: The basics of RMarkdown</a>
 <a href="02-compiling.html">L2: Compiling Documents</a>
 <a href="03-inline.html">L3: Inline R Code</a>
@@ -2677,7 +2677,8 @@ On the Editor panel, click the first icon on the top-left, then select script.</
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/ls.html'>ls</a></span><span class='op'>(</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code>[1] &quot;x&quot;</code></pre>
+<pre><code>[1] &quot;pass_scores&quot; &quot;res2&quot;        &quot;tipjoke&quot;     &quot;tiptable&quot;   
+[5] &quot;x&quot;          </code></pre>
 </div>
 <p>Let’s create more objects!</p>
 <div class="layout-chunk" data-layout="l-body">
@@ -2696,7 +2697,8 @@ On the Editor panel, click the first icon on the top-left, then select script.</
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/ls.html'>ls</a></span><span class='op'>(</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code>[1] &quot;obj1&quot; &quot;obj2&quot; &quot;obj3&quot; &quot;x&quot;   </code></pre>
+<pre><code>[1] &quot;obj1&quot;        &quot;obj2&quot;        &quot;obj3&quot;        &quot;pass_scores&quot;
+[5] &quot;res2&quot;        &quot;tipjoke&quot;     &quot;tiptable&quot;    &quot;x&quot;          </code></pre>
 </div>
 <p>Remove one or more object:</p>
 <div class="layout-chunk" data-layout="l-body">
@@ -2705,7 +2707,8 @@ On the Editor panel, click the first icon on the top-left, then select script.</
 <span class='fu'><a href='https://rdrr.io/r/base/ls.html'>ls</a></span><span class='op'>(</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code>[1] &quot;obj3&quot; &quot;x&quot;   </code></pre>
+<pre><code>[1] &quot;obj3&quot;        &quot;pass_scores&quot; &quot;res2&quot;        &quot;tipjoke&quot;    
+[5] &quot;tiptable&quot;    &quot;x&quot;          </code></pre>
 </div>
 <p>Or, to remove the entire list of created objects:</p>
 <div class="layout-chunk" data-layout="l-body">
@@ -3047,12 +3050,12 @@ This section will present the simplest and <em>most inefficient</em> way of ente
 <p>A vector is an ordered listing of entries. If all entries are numbers, we have a numeric vector. If all entries are character strings, we have a character vector.</p>
 <p>The following table reports the world population estimates (in thousands) for the past few decades.</p>
 <div class="layout-chunk" data-layout="l-body">
-<div id="xjhbppwhki" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="ogkrizruiy" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#xjhbppwhki .gt_table {
+#ogkrizruiy .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -3077,7 +3080,7 @@ This section will present the simplest and <em>most inefficient</em> way of ente
   border-left-color: #D3D3D3;
 }
 
-#xjhbppwhki .gt_heading {
+#ogkrizruiy .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -3089,7 +3092,7 @@ This section will present the simplest and <em>most inefficient</em> way of ente
   border-right-color: #D3D3D3;
 }
 
-#xjhbppwhki .gt_title {
+#ogkrizruiy .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -3099,7 +3102,7 @@ This section will present the simplest and <em>most inefficient</em> way of ente
   border-bottom-width: 0;
 }
 
-#xjhbppwhki .gt_subtitle {
+#ogkrizruiy .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -3109,13 +3112,13 @@ This section will present the simplest and <em>most inefficient</em> way of ente
   border-top-width: 0;
 }
 
-#xjhbppwhki .gt_bottom_border {
+#ogkrizruiy .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#xjhbppwhki .gt_col_headings {
+#ogkrizruiy .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3130,7 +3133,7 @@ This section will present the simplest and <em>most inefficient</em> way of ente
   border-right-color: #D3D3D3;
 }
 
-#xjhbppwhki .gt_col_heading {
+#ogkrizruiy .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3150,7 +3153,7 @@ This section will present the simplest and <em>most inefficient</em> way of ente
   overflow-x: hidden;
 }
 
-#xjhbppwhki .gt_column_spanner_outer {
+#ogkrizruiy .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3162,15 +3165,15 @@ This section will present the simplest and <em>most inefficient</em> way of ente
   padding-right: 4px;
 }
 
-#xjhbppwhki .gt_column_spanner_outer:first-child {
+#ogkrizruiy .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#xjhbppwhki .gt_column_spanner_outer:last-child {
+#ogkrizruiy .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#xjhbppwhki .gt_column_spanner {
+#ogkrizruiy .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -3182,7 +3185,7 @@ This section will present the simplest and <em>most inefficient</em> way of ente
   width: 100%;
 }
 
-#xjhbppwhki .gt_group_heading {
+#ogkrizruiy .gt_group_heading {
   padding: 8px;
   color: #333333;
   background-color: #FFFFFF;
@@ -3204,7 +3207,7 @@ This section will present the simplest and <em>most inefficient</em> way of ente
   vertical-align: middle;
 }
 
-#xjhbppwhki .gt_empty_group_heading {
+#ogkrizruiy .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -3219,15 +3222,15 @@ This section will present the simplest and <em>most inefficient</em> way of ente
   vertical-align: middle;
 }
 
-#xjhbppwhki .gt_from_md > :first-child {
+#ogkrizruiy .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#xjhbppwhki .gt_from_md > :last-child {
+#ogkrizruiy .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#xjhbppwhki .gt_row {
+#ogkrizruiy .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3246,7 +3249,7 @@ This section will present the simplest and <em>most inefficient</em> way of ente
   overflow-x: hidden;
 }
 
-#xjhbppwhki .gt_stub {
+#ogkrizruiy .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3258,7 +3261,7 @@ This section will present the simplest and <em>most inefficient</em> way of ente
   padding-left: 12px;
 }
 
-#xjhbppwhki .gt_summary_row {
+#ogkrizruiy .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3268,7 +3271,7 @@ This section will present the simplest and <em>most inefficient</em> way of ente
   padding-right: 5px;
 }
 
-#xjhbppwhki .gt_first_summary_row {
+#ogkrizruiy .gt_first_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3278,7 +3281,7 @@ This section will present the simplest and <em>most inefficient</em> way of ente
   border-top-color: #D3D3D3;
 }
 
-#xjhbppwhki .gt_grand_summary_row {
+#ogkrizruiy .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3288,7 +3291,7 @@ This section will present the simplest and <em>most inefficient</em> way of ente
   padding-right: 5px;
 }
 
-#xjhbppwhki .gt_first_grand_summary_row {
+#ogkrizruiy .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3298,11 +3301,11 @@ This section will present the simplest and <em>most inefficient</em> way of ente
   border-top-color: #D3D3D3;
 }
 
-#xjhbppwhki .gt_striped {
+#ogkrizruiy .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#xjhbppwhki .gt_table_body {
+#ogkrizruiy .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3311,7 +3314,7 @@ This section will present the simplest and <em>most inefficient</em> way of ente
   border-bottom-color: #D3D3D3;
 }
 
-#xjhbppwhki .gt_footnotes {
+#ogkrizruiy .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3325,13 +3328,13 @@ This section will present the simplest and <em>most inefficient</em> way of ente
   border-right-color: #D3D3D3;
 }
 
-#xjhbppwhki .gt_footnote {
+#ogkrizruiy .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding: 4px;
 }
 
-#xjhbppwhki .gt_sourcenotes {
+#ogkrizruiy .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3345,41 +3348,41 @@ This section will present the simplest and <em>most inefficient</em> way of ente
   border-right-color: #D3D3D3;
 }
 
-#xjhbppwhki .gt_sourcenote {
+#ogkrizruiy .gt_sourcenote {
   font-size: 90%;
   padding: 4px;
 }
 
-#xjhbppwhki .gt_left {
+#ogkrizruiy .gt_left {
   text-align: left;
 }
 
-#xjhbppwhki .gt_center {
+#ogkrizruiy .gt_center {
   text-align: center;
 }
 
-#xjhbppwhki .gt_right {
+#ogkrizruiy .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#xjhbppwhki .gt_font_normal {
+#ogkrizruiy .gt_font_normal {
   font-weight: normal;
 }
 
-#xjhbppwhki .gt_font_bold {
+#ogkrizruiy .gt_font_bold {
   font-weight: bold;
 }
 
-#xjhbppwhki .gt_font_italic {
+#ogkrizruiy .gt_font_italic {
   font-style: italic;
 }
 
-#xjhbppwhki .gt_super {
+#ogkrizruiy .gt_super {
   font-size: 65%;
 }
 
-#xjhbppwhki .gt_footnote_marks {
+#ogkrizruiy .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 65%;
