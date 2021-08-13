@@ -2453,6 +2453,7 @@ Lessons
 <li><a href="#why-use-rmarkdown">Why use RMarkdown?</a></li>
 <li><a href="#getting-started">Getting Started</a></li>
 <li><a href="#yaml">yaml</a></li>
+<li><a href="#remove-the-template-text">Remove the template text</a></li>
 <li><a href="#text-and-code-chunks">Text and Code-Chunks</a></li>
 <li><a href="#running-code">Running Code</a></li>
 <li><a href="#saving-progress">Saving progress</a></li>
@@ -2491,7 +2492,10 @@ Figure 1: RMarkdown Workflow (from <a href="https://www.rstudio.com/wp-content/u
 <p>First things first, we need to open an RMarkdown document.</p>
 <p>In the top menu bar, click on <strong>File &gt; New File &gt; RMarkdown</strong><br />
 A dialgue box will pop-up</p>
-<p>[insert video]</p>
+<center>
+<strong>Creating a new RMarkdown doc</strong><br />
+<video width="320" height="240" controls> <source src="vids/newrmd.mp4" type="video/mp4"> </video>
+</center>
 <h2 id="yaml">yaml</h2>
 <div class="layout-chunk" data-layout="l-body">
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-1"></span>
@@ -2503,7 +2507,12 @@ Figure 2: The bit between three dashes is the <code>YAML</code>, and contains me
 </div>
 <p>The bit at the top of your document between the three dashes <code>---</code> is the <em>“metadata”</em>. This is the information <strong>about</strong> your document. Things like the title, author, output format (html/pdf). For now, we can leave it as it is, but there are lots and lots of features you can exploit via the yaml, such as including stylesheets for html (which is how we set the colours/fonts etc in these pages), to setting custom parameters which enable you to bulk create multiple reports for different values (e.g. a different report on each country in a list). We won’t cover this sort of stuff in this course as it is not so useful for producing scientific reports, but once you are an RMarkdown pro, if you get interested in this sort of thing there is lots of info at <a href="https://bookdown.org/yihui/rmarkdown/params-knit.html" class="uri">https://bookdown.org/yihui/rmarkdown/params-knit.html</a>.</p>
 <p>We will come back to editing the yaml a little bit in <a href="07-refs.html">Lesson 7</a>, but for now we can leave it as it is, having been automatically generated based on the author and title we gave the little pop-up box.</p>
-<p>[insert video] Make sure you follow along with the video</p>
+<h2 id="remove-the-template-text">Remove the template text</h2>
+<p>When you open a new RMarkdown document, it opens a template for you, to help with learning how to use it. Read through the template, and follow along with the video to delete all of it - we want to start fresh:</p>
+<center>
+<strong>Removing the template</strong><br />
+<video width="320" height="240" controls> <source src="vids/template.mp4" type="video/mp4"> </video>
+</center>
 <h2 id="text-and-code-chunks">Text and Code-Chunks</h2>
 <div class="panelset">
 <section id="writing-text" class="panel">
@@ -2516,7 +2525,6 @@ Figure 2: The bit between three dashes is the <code>YAML</code>, and contains me
 <li>Bold text is made by wrapping a sentence in two asterisks <code>**</code>, or two underscores <code>__</code></li>
 <li>italic text is made by wrapping it in one <code>*</code> or <code>_</code>.</li>
 </ul>
-<p>[insert video, writing some text. using a header. writing bold]</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="figure" style="text-align: center"><span id="fig:md"></span>
 <img src="images/md.png" alt="Writing in Markdown (from https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf)" width="700px" />
@@ -2548,6 +2556,14 @@ Figure 4: This is a code-chunk
 </ol>
 </section>
 </div>
+<center>
+<strong>Writing text</strong><br />
+<video width="320" height="240" controls><source src="vids/writing.mp4" type="video/mp4"> </video>
+</center>
+<center>
+<strong>Adding code-chunks</strong><br />
+<video width="320" height="240" controls><source src="vids/newcodechunk.mp4" type="video/mp4"> </video>
+</center>
 <h2 id="running-code">Running Code</h2>
 <p>There are various ways you can send code from your RMarkdown document to the console to be evaluated.</p>
 <div class="layout-chunk" data-layout="l-body">
@@ -2563,23 +2579,36 @@ Figure 5: Running code chunks
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="images/runicon.png" width="100px" style="display: block; margin: auto auto auto 0;" /></p>
 </div>
+<center>
+<strong>Running a line of code</strong><br />
+<video width="320" height="240" controls> <source src="vids/runcode.mp4" type="video/mp4"> </video>
+</center>
 <p>You can also highlight lines to run them together.</p>
-<p>[insert video]</p>
 <h4 id="running-a-chunk-of-code">Running a chunk of code</h4>
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="images/runchunkicon.png" width="50px" style="display: block; margin: auto auto auto 0;" /></p>
 </div>
 <p>The little green arrow at the top right of the code-chunk allows you to run that whole code-chunk.</p>
-<p>[insert video]</p>
+<center>
+<strong>Running current code-chunk</strong><br />
+<video width="320" height="240" controls> <source src="vids/runchunk.mp4" type="video/mp4"> </video>
+</center>
 <h4 id="running-all-code-chunks-above-the-current-code-chunk">Running all code-chunks above the current code-chunk</h4>
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="images/runaboveicon.png" width="50px" style="display: block; margin: auto auto auto 0;" /></p>
 </div>
 <p>The little downwards arrow enables you to run all the code-chunks above that code-chunk. This is useful to do a quick refresh of your analysis process up to that point.</p>
-<p>[insert video]</p>
+<center>
+<strong>Running code-chunks above</strong><br />
+<video width="320" height="240" controls> <source src="vids/runabove.mp4" type="video/mp4"> </video>
+</center>
 <h1 id="saving-progress">Saving progress</h1>
 <div class="imp">
 <p>Don’t forget to save your document!!</p>
+<center>
+<strong>Saving your file</strong><br />
+<video width="320" height="240" controls> <source src="vids/save.mp4" type="video/mp4"> </video>
+</center>
 </div>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->

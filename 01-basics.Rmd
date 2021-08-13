@@ -54,7 +54,11 @@ First things first, we need to open an RMarkdown document.
 In the top menu bar, click on **File > New File > RMarkdown**  
 A dialgue box will pop-up 
 
-[insert video]
+<center>
+__Creating a new RMarkdown doc__  
+<video width="320" height="240" controls>
+  <source src="vids/newrmd.mp4" type="video/mp4">
+</video></center>
 
 ## yaml
 
@@ -66,9 +70,16 @@ The bit at the top of your document between the three dashes `---` is the *"meta
 
 We will come back to editing the yaml a little bit in [Lesson 7](07-refs.html), but for now we can leave it as it is, having been automatically generated based on the author and title we gave the little pop-up box. 
 
-[insert video]
-Make sure you follow along with the video
+## Remove the template text
 
+When you open a new RMarkdown document, it opens a template for you, to help with learning how to use it. 
+Read through the template, and follow along with the video to delete all of it - we want to start fresh:
+
+<center>
+__Removing the template__  
+<video width="320" height="240" controls>
+  <source src="vids/template.mp4" type="video/mp4">
+</video></center>
 
 ## Text and Code-Chunks
 
@@ -86,7 +97,9 @@ Writing text involves formatting your words in plain-text "markdown". There are 
 - Bold text is made by wrapping a sentence in two asterisks `**`, or two underscores `__`
 - italic text is made by wrapping it in one `*` or `_`. 
 
-[insert video, writing some text. using a header. writing bold]
+
+
+
 
 ```{r md, echo=FALSE, out.width="700px", fig.cap="Writing in Markdown (from https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf)"}
 knitr::include_graphics("images/md.png")
@@ -111,10 +124,21 @@ There are a couple of short cuts for adding a new code-chunk. Either of the opti
     ```
 2. Type **Ctrl+Alt+i** on your keyboard ( **Cmd+Opt+i** for Mac).
 
-:::
+
 
 :::
 
+:::
+
+<center>
+__Writing text__  
+<video width="320" height="240" controls><source src="vids/writing.mp4" type="video/mp4">
+</video></center>  
+
+<center>
+__Adding code-chunks__  
+<video width="320" height="240" controls><source src="vids/newcodechunk.mp4" type="video/mp4">
+</video></center>
 
 
 ## Running Code 
@@ -133,9 +157,15 @@ As with an R Script, when your cursor is on a line of R code, you can type __Ctr
 knitr::include_graphics("images/runicon.png")
 ```
 
+<center>
+__Running a line of code__  
+<video width="320" height="240" controls>
+  <source src="vids/runcode.mp4" type="video/mp4">
+</video></center>
+
 You can also highlight lines to run them together. 
 
-[insert video]
+
 
 
 #### Running a chunk of code
@@ -145,7 +175,11 @@ knitr::include_graphics("images/runchunkicon.png")
 ```
 The little green arrow at the top right of the code-chunk allows you to run that whole code-chunk. 
 
-[insert video]
+<center>
+__Running current code-chunk__  
+<video width="320" height="240" controls>
+  <source src="vids/runchunk.mp4" type="video/mp4">
+</video></center>
 
 #### Running all code-chunks above the current code-chunk
 
@@ -154,15 +188,25 @@ knitr::include_graphics("images/runaboveicon.png")
 ```
 The little downwards arrow enables you to run all the code-chunks above that code-chunk. This is useful to do a quick refresh of your analysis process up to that point. 
 
-
-[insert video]
+<center>
+__Running code-chunks above__  
+<video width="320" height="240" controls>
+  <source src="vids/runabove.mp4" type="video/mp4">
+</video></center>
 
 # Saving progress
 
 
 :::imp
 
-Don't forget to save your document!!
+Don't forget to save your document!!  
+
+
+<center>
+__Saving your file__  
+<video width="320" height="240" controls>
+  <source src="vids/save.mp4" type="video/mp4">
+</video></center>
 
 :::
 

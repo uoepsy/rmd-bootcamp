@@ -2450,7 +2450,7 @@ Lessons
 <h3>Contents</h3>
 <ul>
 <li><a href="#why">Why?</a></li>
-<li><a href="#how">How?</a></li>
+<li><a href="#functions-for-pretty-tables">Functions for pretty tables</a></li>
 </ul>
 </nav>
 </div>
@@ -2458,11 +2458,7 @@ Lessons
 
 </div>
 <h1 id="why">Why?</h1>
-<h1 id="how">How?</h1>
-<div class="panelset">
-<section id="default" class="panel">
-<h4>Default</h4>
-default tables are not that pretty.
+<p>Default tables are not that pretty when compiled:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>tipjoke</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/utils/read.table.html'>read.csv</a></span><span class='op'>(</span><span class='st'>'https://uoepsy.github.io/data/TipJoke.csv'</span><span class='op'>)</span>
@@ -2499,9 +2495,10 @@ default tables are not that pretty.
 6 SLLC            28    NA   
 7 SSPS            31     0   </code></pre>
 </div>
-</section>
-<section id="pretty-1---kable" class="panel">
-<h4>Pretty 1 - kable</h4>
+<h1 id="functions-for-pretty-tables">Functions for pretty tables</h1>
+<div class="panelset">
+<section id="kable" class="panel">
+<h4>kable()</h4>
 <p><strong>knitr</strong>’s <code>kable()</code> is a fairly simple way to make tables and data look a little nicer. Simply pass something to <code>kable()</code> and will usually spit out something nicer. You can find a guide here: <a href="https://bookdown.org/yihui/rmarkdown-cookbook/kable.html" class="uri">https://bookdown.org/yihui/rmarkdown-cookbook/kable.html</a><br />
 We can also add captions to our table!</p>
 <div class="layout-chunk" data-layout="l-body">
@@ -2598,8 +2595,8 @@ We can also add captions to our table!</p>
 </table>
 </div>
 </section>
-<section id="pretty-2---gt" class="panel">
-<h4>Pretty 2 - gt</h4>
+<section id="gt" class="panel">
+<h4>gt()</h4>
 <p>The <strong>gt</strong> package has a lot of useful functionality, and works well with grouped data. The best resource for this is at <a href="https://gt.rstudio.com" class="uri">https://gt.rstudio.com</a>. <code>gt()</code> also allows us to specify captions.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
@@ -2610,12 +2607,12 @@ We can also add captions to our table!</p>
   <span class='fu'><a href='https://gt.rstudio.com/reference/gt.html'>gt</a></span><span class='op'>(</span>caption <span class='op'>=</span> <span class='st'>"Another lovely table!"</span><span class='op'>)</span>
 </code></pre>
 </div>
-<div id="mvwhpixmwj" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="sxeqvwszfq" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#mvwhpixmwj .gt_table {
+#sxeqvwszfq .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -2640,7 +2637,7 @@ We can also add captions to our table!</p>
   border-left-color: #D3D3D3;
 }
 
-#mvwhpixmwj .gt_heading {
+#sxeqvwszfq .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2652,7 +2649,7 @@ We can also add captions to our table!</p>
   border-right-color: #D3D3D3;
 }
 
-#mvwhpixmwj .gt_title {
+#sxeqvwszfq .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2662,7 +2659,7 @@ We can also add captions to our table!</p>
   border-bottom-width: 0;
 }
 
-#mvwhpixmwj .gt_subtitle {
+#sxeqvwszfq .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2672,13 +2669,13 @@ We can also add captions to our table!</p>
   border-top-width: 0;
 }
 
-#mvwhpixmwj .gt_bottom_border {
+#sxeqvwszfq .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#mvwhpixmwj .gt_col_headings {
+#sxeqvwszfq .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2693,7 +2690,7 @@ We can also add captions to our table!</p>
   border-right-color: #D3D3D3;
 }
 
-#mvwhpixmwj .gt_col_heading {
+#sxeqvwszfq .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2713,7 +2710,7 @@ We can also add captions to our table!</p>
   overflow-x: hidden;
 }
 
-#mvwhpixmwj .gt_column_spanner_outer {
+#sxeqvwszfq .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2725,15 +2722,15 @@ We can also add captions to our table!</p>
   padding-right: 4px;
 }
 
-#mvwhpixmwj .gt_column_spanner_outer:first-child {
+#sxeqvwszfq .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#mvwhpixmwj .gt_column_spanner_outer:last-child {
+#sxeqvwszfq .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#mvwhpixmwj .gt_column_spanner {
+#sxeqvwszfq .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2745,7 +2742,7 @@ We can also add captions to our table!</p>
   width: 100%;
 }
 
-#mvwhpixmwj .gt_group_heading {
+#sxeqvwszfq .gt_group_heading {
   padding: 8px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2767,7 +2764,7 @@ We can also add captions to our table!</p>
   vertical-align: middle;
 }
 
-#mvwhpixmwj .gt_empty_group_heading {
+#sxeqvwszfq .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2782,15 +2779,15 @@ We can also add captions to our table!</p>
   vertical-align: middle;
 }
 
-#mvwhpixmwj .gt_from_md > :first-child {
+#sxeqvwszfq .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#mvwhpixmwj .gt_from_md > :last-child {
+#sxeqvwszfq .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#mvwhpixmwj .gt_row {
+#sxeqvwszfq .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2809,7 +2806,7 @@ We can also add captions to our table!</p>
   overflow-x: hidden;
 }
 
-#mvwhpixmwj .gt_stub {
+#sxeqvwszfq .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2821,7 +2818,7 @@ We can also add captions to our table!</p>
   padding-left: 12px;
 }
 
-#mvwhpixmwj .gt_summary_row {
+#sxeqvwszfq .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2831,7 +2828,7 @@ We can also add captions to our table!</p>
   padding-right: 5px;
 }
 
-#mvwhpixmwj .gt_first_summary_row {
+#sxeqvwszfq .gt_first_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2841,7 +2838,7 @@ We can also add captions to our table!</p>
   border-top-color: #D3D3D3;
 }
 
-#mvwhpixmwj .gt_grand_summary_row {
+#sxeqvwszfq .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2851,7 +2848,7 @@ We can also add captions to our table!</p>
   padding-right: 5px;
 }
 
-#mvwhpixmwj .gt_first_grand_summary_row {
+#sxeqvwszfq .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2861,11 +2858,11 @@ We can also add captions to our table!</p>
   border-top-color: #D3D3D3;
 }
 
-#mvwhpixmwj .gt_striped {
+#sxeqvwszfq .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#mvwhpixmwj .gt_table_body {
+#sxeqvwszfq .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2874,7 +2871,7 @@ We can also add captions to our table!</p>
   border-bottom-color: #D3D3D3;
 }
 
-#mvwhpixmwj .gt_footnotes {
+#sxeqvwszfq .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2888,13 +2885,13 @@ We can also add captions to our table!</p>
   border-right-color: #D3D3D3;
 }
 
-#mvwhpixmwj .gt_footnote {
+#sxeqvwszfq .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding: 4px;
 }
 
-#mvwhpixmwj .gt_sourcenotes {
+#sxeqvwszfq .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2908,41 +2905,41 @@ We can also add captions to our table!</p>
   border-right-color: #D3D3D3;
 }
 
-#mvwhpixmwj .gt_sourcenote {
+#sxeqvwszfq .gt_sourcenote {
   font-size: 90%;
   padding: 4px;
 }
 
-#mvwhpixmwj .gt_left {
+#sxeqvwszfq .gt_left {
   text-align: left;
 }
 
-#mvwhpixmwj .gt_center {
+#sxeqvwszfq .gt_center {
   text-align: center;
 }
 
-#mvwhpixmwj .gt_right {
+#sxeqvwszfq .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#mvwhpixmwj .gt_font_normal {
+#sxeqvwszfq .gt_font_normal {
   font-weight: normal;
 }
 
-#mvwhpixmwj .gt_font_bold {
+#sxeqvwszfq .gt_font_bold {
   font-weight: bold;
 }
 
-#mvwhpixmwj .gt_font_italic {
+#sxeqvwszfq .gt_font_italic {
   font-style: italic;
 }
 
-#mvwhpixmwj .gt_super {
+#sxeqvwszfq .gt_super {
   font-size: 65%;
 }
 
-#mvwhpixmwj .gt_footnote_marks {
+#sxeqvwszfq .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 65%;
@@ -2995,12 +2992,12 @@ We can also add captions to our table!</p>
   <span class='fu'><a href='https://gt.rstudio.com/reference/gt.html'>gt</a></span><span class='op'>(</span><span class='op'>)</span>
 </code></pre>
 </div>
-<div id="nycgqnijfz" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="lfpgrwulcq" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#nycgqnijfz .gt_table {
+#lfpgrwulcq .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -3025,7 +3022,7 @@ We can also add captions to our table!</p>
   border-left-color: #D3D3D3;
 }
 
-#nycgqnijfz .gt_heading {
+#lfpgrwulcq .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -3037,7 +3034,7 @@ We can also add captions to our table!</p>
   border-right-color: #D3D3D3;
 }
 
-#nycgqnijfz .gt_title {
+#lfpgrwulcq .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -3047,7 +3044,7 @@ We can also add captions to our table!</p>
   border-bottom-width: 0;
 }
 
-#nycgqnijfz .gt_subtitle {
+#lfpgrwulcq .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -3057,13 +3054,13 @@ We can also add captions to our table!</p>
   border-top-width: 0;
 }
 
-#nycgqnijfz .gt_bottom_border {
+#lfpgrwulcq .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#nycgqnijfz .gt_col_headings {
+#lfpgrwulcq .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3078,7 +3075,7 @@ We can also add captions to our table!</p>
   border-right-color: #D3D3D3;
 }
 
-#nycgqnijfz .gt_col_heading {
+#lfpgrwulcq .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3098,7 +3095,7 @@ We can also add captions to our table!</p>
   overflow-x: hidden;
 }
 
-#nycgqnijfz .gt_column_spanner_outer {
+#lfpgrwulcq .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3110,15 +3107,15 @@ We can also add captions to our table!</p>
   padding-right: 4px;
 }
 
-#nycgqnijfz .gt_column_spanner_outer:first-child {
+#lfpgrwulcq .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#nycgqnijfz .gt_column_spanner_outer:last-child {
+#lfpgrwulcq .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#nycgqnijfz .gt_column_spanner {
+#lfpgrwulcq .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -3130,7 +3127,7 @@ We can also add captions to our table!</p>
   width: 100%;
 }
 
-#nycgqnijfz .gt_group_heading {
+#lfpgrwulcq .gt_group_heading {
   padding: 8px;
   color: #333333;
   background-color: #FFFFFF;
@@ -3152,7 +3149,7 @@ We can also add captions to our table!</p>
   vertical-align: middle;
 }
 
-#nycgqnijfz .gt_empty_group_heading {
+#lfpgrwulcq .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -3167,15 +3164,15 @@ We can also add captions to our table!</p>
   vertical-align: middle;
 }
 
-#nycgqnijfz .gt_from_md > :first-child {
+#lfpgrwulcq .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#nycgqnijfz .gt_from_md > :last-child {
+#lfpgrwulcq .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#nycgqnijfz .gt_row {
+#lfpgrwulcq .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3194,7 +3191,7 @@ We can also add captions to our table!</p>
   overflow-x: hidden;
 }
 
-#nycgqnijfz .gt_stub {
+#lfpgrwulcq .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3206,7 +3203,7 @@ We can also add captions to our table!</p>
   padding-left: 12px;
 }
 
-#nycgqnijfz .gt_summary_row {
+#lfpgrwulcq .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3216,7 +3213,7 @@ We can also add captions to our table!</p>
   padding-right: 5px;
 }
 
-#nycgqnijfz .gt_first_summary_row {
+#lfpgrwulcq .gt_first_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3226,7 +3223,7 @@ We can also add captions to our table!</p>
   border-top-color: #D3D3D3;
 }
 
-#nycgqnijfz .gt_grand_summary_row {
+#lfpgrwulcq .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3236,7 +3233,7 @@ We can also add captions to our table!</p>
   padding-right: 5px;
 }
 
-#nycgqnijfz .gt_first_grand_summary_row {
+#lfpgrwulcq .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3246,11 +3243,11 @@ We can also add captions to our table!</p>
   border-top-color: #D3D3D3;
 }
 
-#nycgqnijfz .gt_striped {
+#lfpgrwulcq .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#nycgqnijfz .gt_table_body {
+#lfpgrwulcq .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3259,7 +3256,7 @@ We can also add captions to our table!</p>
   border-bottom-color: #D3D3D3;
 }
 
-#nycgqnijfz .gt_footnotes {
+#lfpgrwulcq .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3273,13 +3270,13 @@ We can also add captions to our table!</p>
   border-right-color: #D3D3D3;
 }
 
-#nycgqnijfz .gt_footnote {
+#lfpgrwulcq .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding: 4px;
 }
 
-#nycgqnijfz .gt_sourcenotes {
+#lfpgrwulcq .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3293,41 +3290,41 @@ We can also add captions to our table!</p>
   border-right-color: #D3D3D3;
 }
 
-#nycgqnijfz .gt_sourcenote {
+#lfpgrwulcq .gt_sourcenote {
   font-size: 90%;
   padding: 4px;
 }
 
-#nycgqnijfz .gt_left {
+#lfpgrwulcq .gt_left {
   text-align: left;
 }
 
-#nycgqnijfz .gt_center {
+#lfpgrwulcq .gt_center {
   text-align: center;
 }
 
-#nycgqnijfz .gt_right {
+#lfpgrwulcq .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#nycgqnijfz .gt_font_normal {
+#lfpgrwulcq .gt_font_normal {
   font-weight: normal;
 }
 
-#nycgqnijfz .gt_font_bold {
+#lfpgrwulcq .gt_font_bold {
   font-weight: bold;
 }
 
-#nycgqnijfz .gt_font_italic {
+#lfpgrwulcq .gt_font_italic {
   font-style: italic;
 }
 
-#nycgqnijfz .gt_super {
+#lfpgrwulcq .gt_super {
   font-size: 65%;
 }
 
-#nycgqnijfz .gt_footnote_marks {
+#lfpgrwulcq .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 65%;
@@ -3367,12 +3364,12 @@ We can also add captions to our table!</p>
   <span class='op'>)</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='https://gt.rstudio.com/reference/gt.html'>gt</a></span><span class='op'>(</span><span class='op'>)</span>
 </code></pre>
 </div>
-<div id="fvtxfmpwbw" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="oafymjblmn" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#fvtxfmpwbw .gt_table {
+#oafymjblmn .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -3397,7 +3394,7 @@ We can also add captions to our table!</p>
   border-left-color: #D3D3D3;
 }
 
-#fvtxfmpwbw .gt_heading {
+#oafymjblmn .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -3409,7 +3406,7 @@ We can also add captions to our table!</p>
   border-right-color: #D3D3D3;
 }
 
-#fvtxfmpwbw .gt_title {
+#oafymjblmn .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -3419,7 +3416,7 @@ We can also add captions to our table!</p>
   border-bottom-width: 0;
 }
 
-#fvtxfmpwbw .gt_subtitle {
+#oafymjblmn .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -3429,13 +3426,13 @@ We can also add captions to our table!</p>
   border-top-width: 0;
 }
 
-#fvtxfmpwbw .gt_bottom_border {
+#oafymjblmn .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#fvtxfmpwbw .gt_col_headings {
+#oafymjblmn .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3450,7 +3447,7 @@ We can also add captions to our table!</p>
   border-right-color: #D3D3D3;
 }
 
-#fvtxfmpwbw .gt_col_heading {
+#oafymjblmn .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3470,7 +3467,7 @@ We can also add captions to our table!</p>
   overflow-x: hidden;
 }
 
-#fvtxfmpwbw .gt_column_spanner_outer {
+#oafymjblmn .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3482,15 +3479,15 @@ We can also add captions to our table!</p>
   padding-right: 4px;
 }
 
-#fvtxfmpwbw .gt_column_spanner_outer:first-child {
+#oafymjblmn .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#fvtxfmpwbw .gt_column_spanner_outer:last-child {
+#oafymjblmn .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#fvtxfmpwbw .gt_column_spanner {
+#oafymjblmn .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -3502,7 +3499,7 @@ We can also add captions to our table!</p>
   width: 100%;
 }
 
-#fvtxfmpwbw .gt_group_heading {
+#oafymjblmn .gt_group_heading {
   padding: 8px;
   color: #333333;
   background-color: #FFFFFF;
@@ -3524,7 +3521,7 @@ We can also add captions to our table!</p>
   vertical-align: middle;
 }
 
-#fvtxfmpwbw .gt_empty_group_heading {
+#oafymjblmn .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -3539,15 +3536,15 @@ We can also add captions to our table!</p>
   vertical-align: middle;
 }
 
-#fvtxfmpwbw .gt_from_md > :first-child {
+#oafymjblmn .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#fvtxfmpwbw .gt_from_md > :last-child {
+#oafymjblmn .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#fvtxfmpwbw .gt_row {
+#oafymjblmn .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3566,7 +3563,7 @@ We can also add captions to our table!</p>
   overflow-x: hidden;
 }
 
-#fvtxfmpwbw .gt_stub {
+#oafymjblmn .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3578,7 +3575,7 @@ We can also add captions to our table!</p>
   padding-left: 12px;
 }
 
-#fvtxfmpwbw .gt_summary_row {
+#oafymjblmn .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3588,7 +3585,7 @@ We can also add captions to our table!</p>
   padding-right: 5px;
 }
 
-#fvtxfmpwbw .gt_first_summary_row {
+#oafymjblmn .gt_first_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3598,7 +3595,7 @@ We can also add captions to our table!</p>
   border-top-color: #D3D3D3;
 }
 
-#fvtxfmpwbw .gt_grand_summary_row {
+#oafymjblmn .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3608,7 +3605,7 @@ We can also add captions to our table!</p>
   padding-right: 5px;
 }
 
-#fvtxfmpwbw .gt_first_grand_summary_row {
+#oafymjblmn .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3618,11 +3615,11 @@ We can also add captions to our table!</p>
   border-top-color: #D3D3D3;
 }
 
-#fvtxfmpwbw .gt_striped {
+#oafymjblmn .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#fvtxfmpwbw .gt_table_body {
+#oafymjblmn .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3631,7 +3628,7 @@ We can also add captions to our table!</p>
   border-bottom-color: #D3D3D3;
 }
 
-#fvtxfmpwbw .gt_footnotes {
+#oafymjblmn .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3645,13 +3642,13 @@ We can also add captions to our table!</p>
   border-right-color: #D3D3D3;
 }
 
-#fvtxfmpwbw .gt_footnote {
+#oafymjblmn .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding: 4px;
 }
 
-#fvtxfmpwbw .gt_sourcenotes {
+#oafymjblmn .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3665,41 +3662,41 @@ We can also add captions to our table!</p>
   border-right-color: #D3D3D3;
 }
 
-#fvtxfmpwbw .gt_sourcenote {
+#oafymjblmn .gt_sourcenote {
   font-size: 90%;
   padding: 4px;
 }
 
-#fvtxfmpwbw .gt_left {
+#oafymjblmn .gt_left {
   text-align: left;
 }
 
-#fvtxfmpwbw .gt_center {
+#oafymjblmn .gt_center {
   text-align: center;
 }
 
-#fvtxfmpwbw .gt_right {
+#oafymjblmn .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#fvtxfmpwbw .gt_font_normal {
+#oafymjblmn .gt_font_normal {
   font-weight: normal;
 }
 
-#fvtxfmpwbw .gt_font_bold {
+#oafymjblmn .gt_font_bold {
   font-weight: bold;
 }
 
-#fvtxfmpwbw .gt_font_italic {
+#oafymjblmn .gt_font_italic {
   font-style: italic;
 }
 
-#fvtxfmpwbw .gt_super {
+#oafymjblmn .gt_super {
   font-size: 65%;
 }
 
-#fvtxfmpwbw .gt_footnote_marks {
+#oafymjblmn .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 65%;
@@ -3743,8 +3740,8 @@ We can also add captions to our table!</p>
 </div>
 </div>
 </section>
-<section id="pretty-3---pander" class="panel">
-<h4>Pretty 3 - pander</h4>
+<section id="pander" class="panel">
+<h4>pander()</h4>
 <p>Pander is nice and simple, and works on the idea of converting R output into neat markdown syntax, which then get compiled into nice looking tables.<br />
 You can read up on some of the functionality here: <a href="https://cran.r-project.org/web/packages/pander/vignettes/pander.html" class="uri">https://cran.r-project.org/web/packages/pander/vignettes/pander.html</a></p>
 <div class="layout-chunk" data-layout="l-body">

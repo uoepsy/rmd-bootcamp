@@ -2467,10 +2467,32 @@ Lessons
 .spc{
   font-size: .9em !important;
 }
+.spc1{
+  background-color: #eaeaea;
+}
+.frame {
+    border: 1px solid #333333 !important; 
+    border-radius: 5px; 
+    padding: 20px 20px 10px 20px; 
+    margin-top: 20px; 
+    margin-bottom: 20px; 
+}
+.imp{
+  border-left: 5px solid #FF3131;
+  padding: 20px 20px 10px 20px; 
+  margin-top: 20px; 
+  margin-bottom: 20px; 
+}
 </style>
 </div>
 <h2 id="what-is-inline-r-code-and-why-should-we-use-it">What is inline R code and why should we use it?</h2>
-<p>What is Inline R Code? why use it</p>
+<p>Inline R code is just another way of including R code in an RMarkdown document, such that it gets evaluated when it gets compiled (or “knitted”). As well as including R code in a code-chunk:</p>
+<div class="spc1">
+<code> ```{r setup, include = FALSE}<br> mean(mydata$outcome_variable)<br> ``` </code>
+</div>
+<p>We can include little bits of R code in our text, to integrate it full with our written report:</p>
+<p>The mean of my outcome variable was <code>`r mean(mydata$outcome_variable)`</code>, with a standard deviation of <code>`r sd(mydata$outcome_variable)`</code>.</p>
+<p>This is really useful, because it means that if you update your analysis (for instance you discover you have to exclude a number of participants) then you don’t have to edit your paragraphs - they will update automatically!</p>
 <h2 id="example">Example</h2>
 <div class="panelset">
 <section id="writing-like-this" class="panel">
@@ -2494,13 +2516,15 @@ Lessons
 <p>Edinburgh University students scored lower (Mean = 30.7, SD = 3.31) than the score reported by the authors of the PASS (Mean = 33). This difference was statistically significant (t(19)=-3.11, p &lt; .05, one-tailed).</p>
 </section>
 </div>
-<h2 id="tips-for-writing-inline-code">Tips for writing inline code</h2>
-<p>making an object, round prior.</p>
+<p>In the example above:</p>
 <ul>
-<li>the code chunk saves the results of the <code>t.test()</code> function as a named object <code>res2</code>.</li>
-<li>in text, the backticks <code>`r … … … `</code> are used to execute small bits of R code, and include the output within the text. For instance, the line <code>`r res2$statistic %&gt;% round(2)`</code> gets the t-statistic from the results, and rounds it to 2 decimal places, which get’s printed out as -3.11.</li>
-<li>the bits between the dollar signs, e.g. $\alpha$ will get printed as mathematical symbols such as <span class="math inline">\(\alpha\)</span>.</li>
+<li>the code-chunk saves the results of the <code>t.test()</code> function as a named object <code>res2</code>.</li>
+<li>in text, the backticks <code>`r … … … `</code> are used to execute small bits of R code, and include the output within the text. For instance, the line <code>`r res2$statistic %&gt;% round(2)`</code> gets the t-statistic from the results, and rounds it to 2 decimal places, which gets printed out as -3.11.</li>
+<li>the bits between the dollar signs, e.g. $\alpha$ get printed as mathematical symbols like <span class="math inline">\(\alpha\)</span>.</li>
+<li>if our data changes, or even the test we perform changes slightly (e.g. testing against <code>mu = 30</code>), then our text will update automatically when we compile it again.</li>
 </ul>
+<h2 id="tips-for-writing-inline-code">Tips for writing inline code</h2>
+<p>To make it easier when writing, it helps to try and keep inline R code a succinct as possible. It is therefore useful to use a code-chunk to store your results in a named object, and then refer to that object in the inline R code. Something which was not done in the above example, would be to round the numbers to the relevant decimal places in the object, rather than in the inline R code.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->

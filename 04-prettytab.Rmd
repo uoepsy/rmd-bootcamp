@@ -11,17 +11,10 @@ xaringanExtra::use_panelset()
 ```
 
 
-# Why?
+# Why?  
 
+Default tables are not that pretty when compiled: 
 
-# How?
-
-::: {.panelset}
-
-::: {.panel}
-#### Default
-
-default tables are not that pretty. 
 ```{r}
 tipjoke <- read.csv('https://uoepsy.github.io/data/TipJoke.csv')
 tiptable <- table(tipjoke$Card, tipjoke$Tip)
@@ -40,10 +33,12 @@ pass_scores %>% group_by(school) %>%
   )
 ```
 
-:::
+# Functions for pretty tables
+
+::: {.panelset}
 
 ::: {.panel}
-#### Pretty 1 - kable
+#### kable()
 
 __knitr__'s `kable()` is a fairly simple way to make tables and data look a little nicer. Simply pass something to `kable()` and will usually spit out something nicer. You can find a guide here: https://bookdown.org/yihui/rmarkdown-cookbook/kable.html  
 We can also add captions to our table!  
@@ -73,7 +68,7 @@ pass_scores %>% group_by(school) %>%
 
 
 ::: {.panel}
-#### Pretty 2 - gt
+#### gt()
 
 The __gt__ package has a lot of useful functionality, and works well with grouped data. The best resource for this is at https://gt.rstudio.com. `gt()` also allows us to specify captions. 
 
@@ -109,7 +104,7 @@ pass_scores %>% group_by(school) %>%
 :::
 
 ::: {.panel}
-#### Pretty 3 - pander
+#### pander()
 
 Pander is nice and simple, and works on the idea of converting R output into neat markdown syntax, which then get compiled into nice looking tables.  
 You can read up on some of the functionality here: https://cran.r-project.org/web/packages/pander/vignettes/pander.html 
