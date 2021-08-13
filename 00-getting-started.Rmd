@@ -35,6 +35,10 @@ For an indicator, we will assume that the reader is familiar with the code below
 
 ```{r echo=T,eval=F}
 library(tidyverse)
+tipjoke <- read_csv('https://uoepsy.github.io/data/TipJoke.csv')
+tiptable <- table(tipjoke$Card, tipjoke$Tip)
+tiptable
+
 pass_scores <- read_csv("https://edin.ac/2wJgYwL") 
 t.test(pass_scores$PASS, mu = 33, alternative = "less")
 pass_scores %>% group_by(school) %>%
