@@ -40,6 +40,7 @@ tiptable <- table(tipjoke$Card, tipjoke$Tip)
 tiptable
 
 pass_scores <- read_csv("https://edin.ac/2wJgYwL") 
+barplot(table(pass_scores$school))
 t.test(pass_scores$PASS, mu = 33, alternative = "less")
 pass_scores %>% group_by(school) %>%
   summarise(
