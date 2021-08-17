@@ -2373,6 +2373,8 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   }</style>
   <!--/radix_placeholder_distill-->
   <script src="site_libs/header-attrs-2.8/header-attrs.js"></script>
+  <link href="site_libs/panelset-0.2.6/panelset.css" rel="stylesheet" />
+  <script src="site_libs/panelset-0.2.6/panelset.js"></script>
   <script src="site_libs/popper-2.6.0/popper.min.js"></script>
   <link href="site_libs/tippy-6.2.7/tippy.css" rel="stylesheet" />
   <link href="site_libs/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
@@ -2447,22 +2449,289 @@ Lessons
 <nav class="l-text toc figcaption" id="TOC">
 <h3>Contents</h3>
 <ul>
-<li><a href="#setting-code-chunk-options-with">setting code chunk options with {}</a></li>
+<li><a href="#prelude">Prelude</a></li>
+<li><a href="#chunk-name">Chunk name</a></li>
+<li><a href="#chunk-options">Chunk options</a></li>
 <li><a href="#echo">echo</a></li>
 <li><a href="#eval">eval</a></li>
 <li><a href="#include">include</a></li>
-<li><a href="#warnings-errors">warnings, errors</a></li>
-<li><a href="#global">global</a></li>
+<li><a href="#warnings-and-messages">warnings and messages</a></li>
+<li><a href="#global-options">Global options</a></li>
 </ul>
 </nav>
 </div>
-<h1 id="setting-code-chunk-options-with">setting code chunk options with {}</h1>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<style type="text/css">
+.spc1{
+  background-color: #eaeaea;
+}
+.frame {
+    border: 1px solid #333333 !important; 
+    border-radius: 5px; 
+    padding: 20px 20px 10px 20px; 
+    margin-top: 20px; 
+    margin-bottom: 20px; 
+}
+.imp{
+  border-left: 5px solid #FF3131;
+  padding: 20px 20px 10px 20px; 
+  margin-top: 20px; 
+  margin-bottom: 20px; 
+}
+</style>
+</div>
+<h1 id="prelude">Prelude</h1>
+<p>Remember in the <a href="02-compiling.html">lesson on compiling</a>, we saw that it is typical to have a “setup” code-chunk at the start of your document, in which you load all the packages you need, and read in the data etc.</p>
+<p>A normal code-chunk looks like:</p>
+<div class="spc1">
+<code> ```{r}<br> <br> ``` </code>
+</div>
+<p><br></p>
+<p>And we had a special chunk which looked like:</p>
+<div class="spc1">
+<code> ```{r setup, include = FALSE}<br> <br> ``` </code>
+</div>
+<p><br></p>
+<h1 id="chunk-name">Chunk name</h1>
+<p>The first thing to note is that we can give our code-chunks a name.<br />
+This is usually the first thing inside the {} after the letter “r”:</p>
+<div class="spc1">
+<code> ```{r mychunkname}<br> <br> ``` </code>
+</div>
+<p>This will come in handy later on when we want to reference the output from certain code-chunks. One immediate benefit is that you can easily navigate through your document to get to the code-chunk you want, by using the menu in the bottom-left of the editor in RStudio:</p>
+<p>[insert video of chunk scrolling]</p>
+<h1 id="chunk-options">Chunk options</h1>
+<p>Along with providing a name for each code-chunk, we can specify how we want it to compile in our finished document. For instance, do we want the code to be shown in the document? Do we want the output to be shown? Do we even want the code to be evaluated, or do we want R to skip over it? These things are all controlled via “chunk options”.</p>
+<h3 id="setting-code-chunk-options-inside">Setting code chunk options inside {}</h3>
+<p>The most straightforward way to set the options for a given code-chunk is to include it inside the {} bits of the code-chunk.<br />
+In the code-chunk below (named “mychunkname”), we have set <code>include = FALSE</code> inside the squiggly-brackets {}. This means that for this code-chunk, the <code>include</code> option will be set as <code>FALSE</code> (we’ll learn what that actually <strong>does</strong> in just a minute!).</p>
+<div class="spc1">
+<code> ```{r mychunkname, include = FALSE}<br> plot(mtcars)<br> ``` </code>
+</div>
 <h1 id="echo">echo</h1>
+<p>the “echo” option sets whether or not the code is printed to the compiled document. It doesn’t change whether the code gets evaluated, and it doesn’t change whether the output (e.g. plots, tables, printed objects) get shown, it just hides/shows the code from the finished document. You can see an example below.</p>
+<div class="panelset">
+<section id="echo-true" class="panel">
+<h4>echo = TRUE</h4>
+<p>Writing this:</p>
+<div class="spc1">
+<code> ```{r mychunkname, echo = TRUE}<br> pass_scores &lt;- read.csv(“<a href="https://edin.ac/2wJgYwL" class="uri">https://edin.ac/2wJgYwL</a>”)<br> barplot(table(pass_scores$school))<br> ``` </code>
+</div>
+<p><br></p>
+<p>Will compile to this:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>pass_scores</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/utils/read.table.html'>read.csv</a></span><span class='op'>(</span><span class='st'>"https://edin.ac/2wJgYwL"</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/graphics/barplot.html'>barplot</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span><span class='op'>(</span><span class='va'>pass_scores</span><span class='op'>$</span><span class='va'>school</span><span class='op'>)</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="05-echoeval_files/figure-html5/unnamed-chunk-2-1.png" width="624" style="display: block; margin: auto;" /></p>
+</div>
+</section>
+<section id="echo-false" class="panel">
+<h4>echo = FALSE</h4>
+<p>Writing this:</p>
+<div class="spc1">
+<code> ```{r mychunkname, echo = FALSE}<br> pass_scores &lt;- read.csv(“<a href="https://edin.ac/2wJgYwL" class="uri">https://edin.ac/2wJgYwL</a>”)<br> barplot(table(pass_scores$school))<br> ``` </code>
+</div>
+<p><br></p>
+<p>Will compile to this:</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="05-echoeval_files/figure-html5/unnamed-chunk-3-1.png" width="624" style="display: block; margin: auto;" /></p>
+</div>
+</section>
+</div>
 <h1 id="eval">eval</h1>
+<p>The “eval” option sets whether or not a code-chunk will be evaluated. For instance, if you set one chunk to not be evaluated, then the resulting computations inside that code-chunk will not happen, and when compiling the document, subsequent chunks which depend on that chunk will be altered. You can see an example of this below.</p>
+<div class="panelset">
+<section id="eval-true" class="panel">
+<h4>eval = TRUE</h4>
+<p>Writing this:</p>
+<div class="spc1">
+<code> ```{r mychunkname, eval = TRUE}<br> pass_scores &lt;- read.csv(“<a href="https://edin.ac/2wJgYwL" class="uri">https://edin.ac/2wJgYwL</a>”)<br> ``` </code>
+</div>
+<br>
+<div class="spc1">
+<code> ```{r mychunk2}<br> barplot(table(pass_scores$school))<br> ``` </code>
+</div>
+<p><br></p>
+<p>Will compile to this:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>pass_scores</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/utils/read.table.html'>read.csv</a></span><span class='op'>(</span><span class='st'>"https://edin.ac/2wJgYwL"</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/graphics/barplot.html'>barplot</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span><span class='op'>(</span><span class='va'>pass_scores</span><span class='op'>$</span><span class='va'>school</span><span class='op'>)</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="05-echoeval_files/figure-html5/unnamed-chunk-5-1.png" width="624" style="display: block; margin: auto;" /></p>
+</div>
+</section>
+<section id="eval-false" class="panel">
+<h4>eval = FALSE</h4>
+<p>Writing this:</p>
+<div class="spc1">
+<code> ```{r mychunkname, eval = FALSE}<br> pass_scores &lt;- read.csv(“<a href="https://edin.ac/2wJgYwL" class="uri">https://edin.ac/2wJgYwL</a>”)<br> ``` </code>
+</div>
+<br>
+<div class="spc1">
+<code> ```{r mychunk2}<br> barplot(table(pass_scores$school))<br> ``` </code>
+</div>
+<p><br></p>
+<p>Will compile to this:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>pass_scores</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/utils/read.table.html'>read.csv</a></span><span class='op'>(</span><span class='st'>"https://edin.ac/2wJgYwL"</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/graphics/barplot.html'>barplot</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span><span class='op'>(</span><span class='va'>pass_scores</span><span class='op'>$</span><span class='va'>school</span><span class='op'>)</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>Error in table(pass_scores$school): object &#39;pass_scores&#39; not found</code></pre>
+</div>
+</section>
+</div>
 <h1 id="include">include</h1>
-<h1 id="warnings-errors">warnings, errors</h1>
-<h1 id="global">global</h1>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<p>The <code>include</code> option is a bit of a funny one. It will not change whether the code gets evaluated, but it will mean all the output (and the code) will be hidden from the compiled document. This is a useful way of making sure that some necessary code <em>does</em> get run when compiling the document, but everything (code + output) gets hidden.</p>
+<div class="panelset">
+<section id="include-true" class="panel">
+<h4>include = TRUE</h4>
+<p>Writing this:</p>
+<div class="spc1">
+<code> ```{r mychunkname, include = TRUE}<br> pass_scores &lt;- read.csv(“<a href="https://edin.ac/2wJgYwL" class="uri">https://edin.ac/2wJgYwL</a>”)<br> mytable &lt;- table(pass_scores$school)<br> mytable<br> ``` </code>
+</div>
+<br>
+<div class="spc1">
+<code> ```{r mychunk2}<br> barplot(mytable)<br> ``` </code>
+</div>
+<p><br></p>
+<p>Will compile to this:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>pass_scores</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/utils/read.table.html'>read.csv</a></span><span class='op'>(</span><span class='st'>"https://edin.ac/2wJgYwL"</span><span class='op'>)</span>
+<span class='va'>mytable</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span><span class='op'>(</span><span class='va'>pass_scores</span><span class='op'>$</span><span class='va'>school</span><span class='op'>)</span>
+<span class='va'>mytable</span>
+</code></pre>
+</div>
+<pre><code>
+        ECA   Economics GeoSciences         LAW        PPLS 
+          3           2           1           6           5 
+       SLLC        SSPS 
+          1           2 </code></pre>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/graphics/barplot.html'>barplot</a></span><span class='op'>(</span><span class='va'>mytable</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="05-echoeval_files/figure-html5/unnamed-chunk-10-1.png" width="624" style="display: block; margin: auto;" /></p>
+</div>
+</section>
+<section id="include-false" class="panel">
+<h4>include = FALSE</h4>
+<p>Writing this:</p>
+<div class="spc1">
+<code> ```{r mychunkname, include = FALSE}<br> pass_scores &lt;- read.csv(“<a href="https://edin.ac/2wJgYwL" class="uri">https://edin.ac/2wJgYwL</a>”)<br> mytable &lt;- table(pass_scores$school)<br> mytable<br> ``` </code>
+</div>
+<br>
+<div class="spc1">
+<code> ```{r mychunk2}<br> barplot(mytable)<br> ``` </code>
+</div>
+<p><br></p>
+<p>Will compile to this:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/graphics/barplot.html'>barplot</a></span><span class='op'>(</span><span class='va'>mytable</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="05-echoeval_files/figure-html5/unnamed-chunk-12-1.png" width="624" style="display: block; margin: auto;" /></p>
+</div>
+</section>
+</div>
+<h1 id="warnings-and-messages">warnings and messages</h1>
+<p>These are perhaps the most intuitive of the chunk options to remember. Some lines of code will return a message, some will return a warning. These chunk options simply control whether or not they get shown in the final compiled document.</p>
+<div class="panelset">
+<section id="message-true" class="panel">
+<h4>message = TRUE</h4>
+<p>Writing this:</p>
+<div class="spc1">
+<code> ```{r mychunkname, message = TRUE}<br> library(tidyverse)<br> ``` </code>
+</div>
+<p><br> Will compile to this:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://tidyverse.tidyverse.org'>tidyverse</a></span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+</section>
+<section id="message-false" class="panel">
+<h4>message = FALSE</h4>
+<p>Writing this:</p>
+<div class="spc1">
+<code> ```{r mychunkname, message = FALSE}<br> library(tidyverse)<br> ``` </code>
+</div>
+<p><br> Will compile to this:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://tidyverse.tidyverse.org'>tidyverse</a></span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+</section>
+<section id="warning-true" class="panel">
+<h4>warning = TRUE</h4>
+<p>Writing this:</p>
+<div class="spc1">
+<code> ```{r mychunkname, warning = TRUE}<br> x &lt;- c(“2”, -3, “end”, 0, 4, 0.2)<br> as.numeric(x)<br> ``` </code>
+</div>
+<p><br> Will compile to this:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"2"</span>, <span class='op'>-</span><span class='fl'>3</span>, <span class='st'>"end"</span>, <span class='fl'>0</span>, <span class='fl'>4</span>, <span class='fl'>0.2</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>Warning: NAs introduced by coercion</code></pre>
+<pre><code>[1]  2.0 -3.0   NA  0.0  4.0  0.2</code></pre>
+</div>
+</section>
+<section id="warning-false" class="panel">
+<h4>warning = FALSE</h4>
+<p>Writing this:</p>
+<div class="spc1">
+<code> ```{r mychunkname, warning = FALSE}<br> x &lt;- c(“2”, -3, “end”, 0, 4, 0.2)<br> as.numeric(x)<br> ``` </code>
+</div>
+<p><br></p>
+<p>Will compile to this:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"2"</span>, <span class='op'>-</span><span class='fl'>3</span>, <span class='st'>"end"</span>, <span class='fl'>0</span>, <span class='fl'>4</span>, <span class='fl'>0.2</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>[1]  2.0 -3.0   NA  0.0  4.0  0.2</code></pre>
+</div>
+</section>
+</div>
+<h1 id="global-options">Global options</h1>
+<p>As well as being able to set the options for specific code-chunks, we can set them globally for all the code-chunks in our document.</p>
+<p>We can do this inside a code-chunk (seems weird, I know!), code like this in our first chunk (the “setup” chunk):</p>
+<div class="spc1">
+<code> ```{r setup, include = FALSE}<br> library(knitr) opts_chunk$set(echo = FALSE, message = FALSE)<br> ``` </code>
+</div>
+<p><br></p>
+<p>This will mean that for all subsequent code-chunks, the code will not get printed in the final document, and no messages will get printed either (this is unless we specifically set <code>echo = TRUE</code> for a code-chunk later on, which will override the global option).</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>

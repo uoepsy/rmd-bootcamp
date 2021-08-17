@@ -12,19 +12,6 @@ xaringanExtra::use_panelset()
 
 ## What is RMarkdown?
 
-::: {.panelset}
-
-::: {.panel}
-#### Go from this
-:::
-
-::: {.panel}
-#### To this!
-:::
-
-:::
-
-
 
 ## Why use RMarkdown?
 
