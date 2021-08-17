@@ -2373,6 +2373,8 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   }</style>
   <!--/radix_placeholder_distill-->
   <script src="site_libs/header-attrs-2.8/header-attrs.js"></script>
+  <link href="site_libs/panelset-0.2.6/panelset.css" rel="stylesheet" />
+  <script src="site_libs/panelset-0.2.6/panelset.js"></script>
   <script src="site_libs/popper-2.6.0/popper.min.js"></script>
   <link href="site_libs/tippy-6.2.7/tippy.css" rel="stylesheet" />
   <link href="site_libs/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
@@ -2447,19 +2449,140 @@ Lessons
 <nav class="l-text toc figcaption" id="TOC">
 <h3>Contents</h3>
 <ul>
+<li><a href="#pre-requisites-to-enable-referencing">Pre-requisites to enable referencing</a></li>
+<li><a href="#chunk-names">Chunk names!</a></li>
 <li><a href="#referencing-a-figure">Referencing a figure</a></li>
 <li><a href="#referencing-a-table">Referencing a table</a></li>
 </ul>
 </nav>
 </div>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<style type="text/css">
+.spc1{
+  background-color: #eaeaea;
+}
+.spc1 code{
+  font-size: .8em !important;
+}
+.frame {
+    border: 1px solid #333333 !important; 
+    border-radius: 5px; 
+    padding: 20px 20px 10px 20px; 
+    margin-top: 20px; 
+    margin-bottom: 20px; 
+}
+.imp{
+  border-left: 5px solid #FF3131;
+  padding: 20px 20px 10px 20px; 
+  margin-top: 20px; 
+  margin-bottom: 20px; 
+}
+</style>
+</div>
+<h1 id="pre-requisites-to-enable-referencing">Pre-requisites to enable referencing</h1>
+<p>To enable cross referencing of plots, figures and tables, we need to change the output of our document slightly.</p>
+<p>We’re going to need to change the <strong>yaml:</strong></p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-2"></span>
+<img src="images/yaml.png" alt="The bit between three dashes is the `YAML`, and contains metadata about the document" width="198" />
+<p class="caption">
+Figure 1: The bit between three dashes is the <code>YAML</code>, and contains metadata about the document
+</p>
+</div>
+</div>
+<p>Rather than using <code>output: html_document</code> or <code>output: pdf_document</code>, we are going to need to use some specific classes of output. The easy ones to start with are in the <strong>bookdown</strong> package.<br />
+Install the bookdown package and then change your output type to either <code>bookdown::html_document2</code> or <code>bookdown::pdf_document2</code>. This will allow us to do the various referencing of Figures and Tables detailed below.</p>
+<pre><code>---
+title: &quot;this is my title&quot;
+author: &quot;I am the author&quot;
+date: &quot;13/08/2021&quot;
+output: bookdown::html_document2
+---</code></pre>
+<h1 id="chunk-names">Chunk names!</h1>
+<p>We reference a figure or table based on the code-chunk in which it is produced. For example, once we provide a name for the code-chunk below (“penguinplot”) we can then reference in text the Figure which has been produced by that chunk, and the numbering will be automatically sorted for us!</p>
+<div class="spc1">
+<code> ```{r penguinplot, fig.cap=“Counts of penguins of different species”}<br> library(palmerpenguins)<br> barplot(table(penguins$species))<br> ``` </code>
+</div>
+<p><br></p>
 <h1 id="referencing-a-figure">Referencing a figure</h1>
-<ul>
-<li>bookdown::html_document2/pdf_document2</li>
-<li>chunk name</li>
-<li>at ref (chunk-name)</li>
-</ul>
+<p>To reference a figure, we use the format \@ref(fig:<strong>chunkname</strong>), where <strong>chunkname</strong> is the name of the code-chunk that outputs our figure. You can find an example below.</p>
+<div class="panelset">
+<section id="write-this" class="panel">
+<h4>Write this:</h4>
+<pre><code>As you can see in Figure \@ref(fig:penguinplot), there are various penguins of different species</code></pre>
+<div class="spc1">
+<code> ```{r penguinplot, fig.cap=“Counts of penguins of different species”}<br> library(palmerpenguins)<br> barplot(table(penguins$species))<br> ``` </code>
+</div>
+<p><br></p>
+</section>
+<section id="compiles-to-this" class="panel">
+<h4>Compiles to this:</h4>
+<p>As you can see in Figure <a href="#fig:penguinplot">2</a>, there are various penguins of different species</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://allisonhorst.github.io/palmerpenguins/'>palmerpenguins</a></span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/graphics/barplot.html'>barplot</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span><span class='op'>(</span><span class='va'>penguins</span><span class='op'>$</span><span class='va'>species</span><span class='op'>)</span><span class='op'>)</span>
+</code></pre>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:penguinplot"></span>
+<img src="07-refs_files/figure-html5/penguinplot-1.png" alt="Counts of penguins of different species" width="624" />
+<p class="caption">
+Figure 2: Counts of penguins of different species
+</p>
+</div>
+</div>
+</section>
+</div>
 <h1 id="referencing-a-table">Referencing a table</h1>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<p>To reference a table, we use the format \@ref(tab:<strong>chunkname</strong>), where <strong>chunkname</strong> is the name of the code-chunk that outputs our table. You can find an example below.</p>
+<div class="panelset">
+<section id="write-this-1" class="panel">
+<h4>Write this:</h4>
+<pre><code>As you can see in Table \@ref(tab:penguinplot), there are various penguins of different species</code></pre>
+<div class="spc1">
+<code> ```{r penguintable}<br> library(palmerpenguins)<br> knitr::kable(table(penguins$species), caption = “counts of penguins of different species”)<br> ``` </code>
+</div>
+<p><br></p>
+</section>
+<section id="compiles-to-this-1" class="panel">
+<h4>Compiles to this:</h4>
+<p>As you can see in Table <a href="#tab:penguintable">1</a>, there are various penguins of different species</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://allisonhorst.github.io/palmerpenguins/'>palmerpenguins</a></span><span class='op'>)</span>
+<span class='fu'>knitr</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/knitr/man/kable.html'>kable</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span><span class='op'>(</span><span class='va'>penguins</span><span class='op'>$</span><span class='va'>species</span><span class='op'>)</span>, caption <span class='op'>=</span> <span class='st'>"counts of penguins of different species"</span><span class='op'>)</span>
+</code></pre>
+</div>
+<table>
+<caption><span id="tab:penguintable">Table 1: </span>counts of penguins of different species</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Var1</th>
+<th style="text-align: right;">Freq</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: right;">152</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Chinstrap</td>
+<td style="text-align: right;">68</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: right;">124</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>

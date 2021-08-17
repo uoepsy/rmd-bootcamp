@@ -2373,6 +2373,8 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   }</style>
   <!--/radix_placeholder_distill-->
   <script src="site_libs/header-attrs-2.8/header-attrs.js"></script>
+  <link href="site_libs/panelset-0.2.6/panelset.css" rel="stylesheet" />
+  <script src="site_libs/panelset-0.2.6/panelset.js"></script>
   <script src="site_libs/popper-2.6.0/popper.min.js"></script>
   <link href="site_libs/tippy-6.2.7/tippy.css" rel="stylesheet" />
   <link href="site_libs/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
@@ -2447,21 +2449,223 @@ Lessons
 <nav class="l-text toc figcaption" id="TOC">
 <h3>Contents</h3>
 <ul>
-<li><a href="#width-and-height">width and height</a></li>
-<li><a href="#captions">captions</a></li>
-<li><a href="#external-images">external images</a>
+<li><a href="#plots-vs-external-image-files">Plots vs External image files</a></li>
+<li><a href="#figure-options">Figure options</a>
 <ul>
-<li><a href="#readings">Readings</a></li>
+<li><a href="#width-and-height">width and height</a></li>
+<li><a href="#fig.align">fig.align</a></li>
+<li><a href="#captions">Captions</a></li>
 </ul></li>
 </ul>
 </nav>
 </div>
-<h1 id="width-and-height">width and height</h1>
-<h1 id="captions">captions</h1>
-<h1 id="external-images">external images</h1>
-<p>knitr::include_graphics()</p>
-<h2 id="readings">Readings</h2>
-<p>For further information, check to the following:</p>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<style type="text/css">
+.spc1{
+  background-color: #eaeaea;
+}
+.spc1 code{
+  font-size: .8em !important;
+}
+.frame {
+    border: 1px solid #333333 !important; 
+    border-radius: 5px; 
+    padding: 20px 20px 10px 20px; 
+    margin-top: 20px; 
+    margin-bottom: 20px; 
+}
+.imp{
+  border-left: 5px solid #FF3131;
+  padding: 20px 20px 10px 20px; 
+  margin-top: 20px; 
+  margin-bottom: 20px; 
+}
+</style>
+</div>
+<h1 id="plots-vs-external-image-files">Plots vs External image files</h1>
+<p>We have already seen how we can include a plot in a document, by creating the plot in a code-chunk:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>pass_scores</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/utils/read.table.html'>read.csv</a></span><span class='op'>(</span><span class='st'>"https://edin.ac/2wJgYwL"</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/graphics/barplot.html'>barplot</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span><span class='op'>(</span><span class='va'>pass_scores</span><span class='op'>$</span><span class='va'>school</span><span class='op'>)</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="06-figs_files/figure-html5/unnamed-chunk-2-1.png" width="624" style="display: block; margin: auto;" /></p>
+</div>
+<p>However, we can also include images from files stored locally on our computer, or stored on the internet. We can do so using the <code>include_graphics()</code> function from the <strong>knitr</strong> package:</p>
+<div class="spc1">
+<code> ```{r}<br> library(knitr)<br> include_graphics(“<a href="https://edin.ac/37Ml3Q2" class="uri">https://edin.ac/37Ml3Q2</a>”)<br> include_graphics(“images/dougal.jpeg”)<br> ``` </code>
+</div>
+<p><br></p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://yihui.org/knitr/'>knitr</a></span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/pkg/knitr/man/include_graphics.html'>include_graphics</a></span><span class='op'>(</span><span class='st'>"https://edin.ac/37Ml3Q2"</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="https://edin.ac/37Ml3Q2" width="150px" style="display: block; margin: auto;" /></p>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/pkg/knitr/man/include_graphics.html'>include_graphics</a></span><span class='op'>(</span><span class='st'>"images/dougal.jpeg"</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="images/dougal.jpeg" width="200px" style="display: block; margin: auto;" /></p>
+</div>
+<h1 id="figure-options">Figure options</h1>
+<p>We can use a lot of extra options to control the output of plots and figures. These are set as code-chunk options (see the <a href="05-echoeval.html">Lesson on hiding code and output</a>). A couple of the main ones are detailed below</p>
+<h2 id="width-and-height">width and height</h2>
+<div class="panelset">
+<section id="resize-any-image" class="panel">
+<h4>Resize Any Image</h4>
+<p>To simply scale up/down any image at all, we can use the <code>out.width</code> and <code>out.height</code> options to set the height and width. Personally, I find it easiest to use these with pixels as the units:</p>
+<p>Writing this:</p>
+<div class="spc1">
+<code> ```{r out.width=“150px”}<br> include_graphics(“<a href="https://edin.ac/37Ml3Q2" class="uri">https://edin.ac/37Ml3Q2</a>”)<br> barplot(table(pass_scores$school))<br> ``` </code>
+</div>
+<p><br></p>
+<p>Compiles to this:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/pkg/knitr/man/include_graphics.html'>include_graphics</a></span><span class='op'>(</span><span class='st'>"https://edin.ac/37Ml3Q2"</span><span class='op'>)</span>
+</code></pre>
+</div>
+<img src="https://edin.ac/37Ml3Q2" width="150px" style="display: block; margin: auto;" />
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/graphics/barplot.html'>barplot</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span><span class='op'>(</span><span class='va'>pass_scores</span><span class='op'>$</span><span class='va'>school</span><span class='op'>)</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="06-figs_files/figure-html5/unnamed-chunk-5-2.png" width="150px" style="display: block; margin: auto;" /></p>
+</div>
+<p>Writing this:</p>
+<div class="spc1">
+<code> ```{r out.width=“300px”, out.height = “50px”}<br> include_graphics(“<a href="https://edin.ac/37Ml3Q2" class="uri">https://edin.ac/37Ml3Q2</a>”)<br> barplot(table(pass_scores$school))<br> ``` </code>
+</div>
+<p><br></p>
+<p>Compiles to this:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/pkg/knitr/man/include_graphics.html'>include_graphics</a></span><span class='op'>(</span><span class='st'>"https://edin.ac/37Ml3Q2"</span><span class='op'>)</span>
+</code></pre>
+</div>
+<img src="https://edin.ac/37Ml3Q2" width="300px" height="50px" style="display: block; margin: auto;" />
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/graphics/barplot.html'>barplot</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span><span class='op'>(</span><span class='va'>pass_scores</span><span class='op'>$</span><span class='va'>school</span><span class='op'>)</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="06-figs_files/figure-html5/unnamed-chunk-6-2.png" width="300px" height="50px" style="display: block; margin: auto;" /></p>
+</div>
+</section>
+<section id="resizing-r-generated-images-only" class="panel">
+<h4>Resizing R-Generated Images Only</h4>
+<p>R-generated plots can also be resized using <code>fig.width</code> and <code>fig.height</code>. The defaults are 7x5. Note that this method of resizing adjusts the plotting area but preserves things such as font sizes, rather than simply resizing everything and losing resolution.</p>
+<p>Writing this:</p>
+<div class="spc1">
+<code> ```{r}<br> barplot(table(pass_scores$school))<br> ``` </code>
+</div>
+<p><br></p>
+<p>Compiles to this:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/graphics/barplot.html'>barplot</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span><span class='op'>(</span><span class='va'>pass_scores</span><span class='op'>$</span><span class='va'>school</span><span class='op'>)</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="06-figs_files/figure-html5/unnamed-chunk-7-1.png" width="624" style="display: block; margin: auto;" /></p>
+</div>
+<p>Writing this:</p>
+<div class="spc1">
+<code> ```{r fig.width=3, fig.height=6}<br> barplot(table(pass_scores$school))<br> ``` </code>
+</div>
+<p><br></p>
+<p>Compiles to this:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/graphics/barplot.html'>barplot</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span><span class='op'>(</span><span class='va'>pass_scores</span><span class='op'>$</span><span class='va'>school</span><span class='op'>)</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="06-figs_files/figure-html5/unnamed-chunk-8-1.png" width="288" style="display: block; margin: auto;" /></p>
+</div>
+</section>
+</div>
+<h2 id="fig.align">fig.align</h2>
+<p>This one should be fairly intuitive: do you want your image on the left, middle or right?</p>
+<div class="spc1">
+<code> ```{r fig.align=“left”}<br> include_graphics(“<a href="https://edin.ac/37Ml3Q2" class="uri">https://edin.ac/37Ml3Q2</a>”)<br> ``` </code>
+</div>
+<p><br></p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://yihui.org/knitr/'>knitr</a></span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/pkg/knitr/man/include_graphics.html'>include_graphics</a></span><span class='op'>(</span><span class='st'>"https://edin.ac/37Ml3Q2"</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="https://edin.ac/37Ml3Q2" width="150px" style="display: block; margin: auto auto auto 0;" /></p>
+</div>
+<div class="spc1">
+<code> ```{r fig.align=“center”}<br> include_graphics(“<a href="https://edin.ac/37Ml3Q2" class="uri">https://edin.ac/37Ml3Q2</a>”)<br> ``` </code>
+</div>
+<p><br></p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://yihui.org/knitr/'>knitr</a></span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/pkg/knitr/man/include_graphics.html'>include_graphics</a></span><span class='op'>(</span><span class='st'>"https://edin.ac/37Ml3Q2"</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="https://edin.ac/37Ml3Q2" width="150px" style="display: block; margin: auto;" /></p>
+</div>
+<div class="spc1">
+<code> ```{r fig.align=“right”}<br> include_graphics(“<a href="https://edin.ac/37Ml3Q2" class="uri">https://edin.ac/37Ml3Q2</a>”)<br> ``` </code>
+</div>
+<p><br></p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://yihui.org/knitr/'>knitr</a></span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/pkg/knitr/man/include_graphics.html'>include_graphics</a></span><span class='op'>(</span><span class='st'>"https://edin.ac/37Ml3Q2"</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="https://edin.ac/37Ml3Q2" width="150px" style="display: block; margin: auto 0 auto auto;" /></p>
+</div>
+<h2 id="captions">Captions</h2>
+<p>We can include captions for an image or a plot by using the <code>fig.cap</code> option. Note that this needs a separate code-chunk if you want different captions for each image.</p>
+<p>Writing this:</p>
+<div class="spc1">
+<code> ```{r fig.cap=“Counts of penguins of different species”}<br> library(palmerpenguins)<br> barplot(table(penguins$species))<br> ``` </code>
+</div>
+<p><br></p>
+<br>
+<div class="spc1">
+<code> ```{r fig.cap=“a picture of a brain…”}<br> include_graphics(“<a href="https://edin.ac/37Ml3Q2" class="uri">https://edin.ac/37Ml3Q2</a>”)<br> ``` </code>
+</div>
+<p><br></p>
+<p>Compiles to this:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://allisonhorst.github.io/palmerpenguins/'>palmerpenguins</a></span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/graphics/barplot.html'>barplot</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span><span class='op'>(</span><span class='va'>penguins</span><span class='op'>$</span><span class='va'>species</span><span class='op'>)</span><span class='op'>)</span>
+</code></pre>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-12"></span>
+<img src="06-figs_files/figure-html5/unnamed-chunk-12-1.png" alt="Counts of penguins of different species" width="624" />
+<p class="caption">
+Figure 1: Counts of penguins of different species
+</p>
+</div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/pkg/knitr/man/include_graphics.html'>include_graphics</a></span><span class='op'>(</span><span class='st'>"https://edin.ac/37Ml3Q2"</span><span class='op'>)</span>
+</code></pre>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-13"></span>
+<img src="https://edin.ac/37Ml3Q2" alt="a picture of a brain..."  />
+<p class="caption">
+Figure 2: a picture of a brain…
+</p>
+</div>
+</div>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->

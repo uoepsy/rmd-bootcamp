@@ -15,6 +15,9 @@ xaringanExtra::use_panelset()
 .spc1{
   background-color: #eaeaea;
 }
+.spc1 code{
+  font-size: .8em !important;
+}
 .frame {
     border: 1px solid #333333 !important; 
     border-radius: 5px; 
@@ -80,7 +83,7 @@ plot(mtcars)<br>
 &grave;&grave;&grave;
 </code></div>
 
-# echo
+# echo = ?
 
 the "echo" option sets whether or not the code is printed to the compiled document. It doesn't change whether the code gets evaluated, and it doesn't change whether the output (e.g. plots, tables, printed objects) get shown, it just hides/shows the code from the finished document. You can see an example below.
 
@@ -135,7 +138,7 @@ barplot(table(pass_scores$school))
 
 
 
-# eval
+# eval = ?
 
 The "eval" option sets whether or not a code-chunk will be evaluated. For instance, if you set one chunk to not be evaluated, then the resulting computations inside that code-chunk will not happen, and when compiling the document, subsequent chunks which depend on that chunk will be altered. You can see an example of this below. 
 
@@ -203,7 +206,7 @@ barplot(table(pass_scores$school))
 :::
 
 
-# include
+# include = ?
 
 The `include` option is a bit of a funny one. It will not change whether the code gets evaluated, but it will mean all the output (and the code) will be hidden from the compiled document. This is a useful way of making sure that some necessary code _does_ get run when compiling the document, but everything (code + output) gets hidden. 
 
@@ -275,7 +278,7 @@ barplot(mytable)
 
 :::
 
-# warnings and messages
+# warning = ? and message = ?
 
 These are perhaps the most intuitive of the chunk options to remember. Some lines of code will return a message, some will return a warning. These chunk options simply control whether or not they get shown in the final compiled document. 
 
