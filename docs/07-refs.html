@@ -2453,6 +2453,7 @@ Lessons
 <li><a href="#chunk-names">Chunk names!</a></li>
 <li><a href="#referencing-a-figure">Referencing a figure</a></li>
 <li><a href="#referencing-a-table">Referencing a table</a></li>
+<li><a href="#figures-tables-side-by-side">Figures &amp; Tables Side by Side</a></li>
 </ul>
 </nav>
 </div>
@@ -2579,6 +2580,83 @@ Figure 2: Counts of penguins of different species
 </tr>
 </tbody>
 </table>
+</div>
+</section>
+</div>
+<h1 id="figures-tables-side-by-side">Figures &amp; Tables Side by Side</h1>
+<p>This also works when arranging figures and tables side-by-side. For instance:</p>
+<div class="panelset">
+<section id="writing-this" class="panel">
+<h4>Writing this:</h4>
+<p>Oh look! A lovely plot can be found in figure \<span class="citation" data-cites="ref">@ref</span>(fig:thisismyplot). And a lovely table in Table \<span class="citation" data-cites="ref">@ref</span>(tab:thisismytable).</p>
+<p>&lt;div style=“display: inline-block; max-width: 45%; vertical-align: top;”&gt;</p>
+<div class="spc1">
+<p><code> ```{r thisismytable, echo = FALSE}<br> library(knitr)<br> pass_scores &lt;- read.csv(“<a href="https://edin.ac/2wJgYwL" class="uri">https://edin.ac/2wJgYwL</a>”)<br> kable(table(pass_scores$school), caption=“Oh Look! A table!”)<br> ``` </code><br></p>
+</div>
+<p>&lt;/div&gt;</p>
+<p>&lt;div style=“display: inline-block; max-width: 45%; vertical-align: top;”&gt;</p>
+<div class="spc1">
+<p><code> ```{r thisismyplot, echo = FALSE, fig.cap=“It’s a plot!”}<br> barplot(table(pass_scores$school))<br> ``` </code><br></p>
+</div>
+<p>&lt;/div&gt;</p>
+</section>
+<section id="will-compile-to-this" class="panel">
+<h4>Will compile to this:</h4>
+<p>Oh look! A lovely plot can be found in figure <a href="#fig:thisismyplot">3</a>. And a lovely table in Table <a href="#tab:thisismytable">2</a>.</p>
+<div>
+<div style="display: inline-block; max-width: 45%; vertical-align: top; margin: 10px">
+<div class="layout-chunk" data-layout="l-body">
+<table>
+<caption><span id="tab:thisismytable">Table 2: </span>This is a table!</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Var1</th>
+<th style="text-align: right;">Freq</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">ECA</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Economics</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">GeoSciences</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">LAW</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">PPLS</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">SLLC</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">SSPS</td>
+<td style="text-align: right;">2</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div style="display: inline-block; max-width: 45%; vertical-align: top; margin: 10px">
+<div class="layout-chunk" data-layout="l-body">
+<div class="figure" style="text-align: center"><span id="fig:thisismyplot"></span>
+<img src="07-refs_files/figure-html5/thisismyplot-1.png" alt="This is a plot!" width="624" />
+<p class="caption">
+Figure 3: This is a plot!
+</p>
+</div>
+</div>
+</div>
 </div>
 </section>
 </div>

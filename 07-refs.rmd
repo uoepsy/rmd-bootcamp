@@ -141,3 +141,68 @@ knitr::kable(table(penguins$species), caption = "counts of penguins of different
 :::
 
 
+
+
+# Figures \& Tables Side by Side
+
+This also works when arranging figures and tables side-by-side. For instance:    
+
+::: {.panelset}
+
+::: {.panel}
+#### Writing this:  
+
+Oh look! A lovely plot can be found in figure \\@ref(fig:thisismyplot). And a lovely table in Table \\@ref(tab:thisismytable).  
+
+\<div style="display: inline-block; max-width: 45%; vertical-align: top;"\>
+
+<div class="spc1"><code>
+&grave;&grave;&grave;{r thisismytable, echo = FALSE}<br>
+library(knitr)<br>
+pass_scores <- read.csv("https://edin.ac/2wJgYwL")<br>
+kable(table(pass_scores$school), caption="Oh Look! A table!")<br>
+&grave;&grave;&grave;
+</code><br>
+</div>
+
+\</div\>
+
+\<div style="display: inline-block; max-width: 45%; vertical-align: top;"\>
+
+<div class="spc1">
+<code>
+&grave;&grave;&grave;{r thisismyplot, echo = FALSE, fig.cap="It's a plot!"}<br>
+barplot(table(pass_scores$school))<br>
+&grave;&grave;&grave;
+</code><br>
+</div>
+
+\</div\>
+
+:::
+
+::: {.panel}
+#### Will compile to this:  
+
+Oh look! A lovely plot can be found in figure \@ref(fig:thisismyplot). And a lovely table in Table \@ref(tab:thisismytable).  
+
+<div>
+<div style="display: inline-block; max-width: 45%; vertical-align: top; margin: 10px">
+```{r thisismytable, echo = FALSE}
+library(knitr)
+pass_scores <- read.csv("https://edin.ac/2wJgYwL")
+kable(table(pass_scores$school), caption="This is a table!")
+```
+</div>
+<div style="display: inline-block; max-width: 45%; vertical-align: top; margin: 10px">
+```{r thisismyplot, echo=FALSE,fig.cap="This is a plot!"}
+barplot(table(pass_scores$school))
+```
+</div>
+</div>
+
+:::
+
+:::
+
+
