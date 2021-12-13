@@ -2456,6 +2456,8 @@ Lessons
 <li><a href="#fig.align">fig.align</a></li>
 <li><a href="#captions">Captions</a></li>
 </ul></li>
+<li><a href="#multiple-figures">Multiple Figures</a></li>
+<li><a href="#figures-tables">Figures &amp; Tables</a></li>
 </ul>
 </nav>
 </div>
@@ -2665,6 +2667,77 @@ Figure 1: Counts of penguins of different species
 Figure 2: a picture of a brain…
 </p>
 </div>
+</div>
+<h1 id="multiple-figures">Multiple Figures</h1>
+<p>For arranging multiple plots created in GGplot, please see the <a href="https://patchwork.data-imaginist.com/">patchwork package</a>. It allows you to combine plots in various different ways.</p>
+<h1 id="figures-tables">Figures &amp; Tables</h1>
+<p>Arranging figures and tables side-by-side in RMarkdown can be a bit of a pain. The easiest way (only when compiling to .html) is to include write some quick html code.</p>
+<div class="panelset">
+<section id="writing-this" class="panel">
+<h4>Writing this:</h4>
+<p>&lt;div style=“display: inline-block; max-width: 45%; vertical-align: top;”&gt;</p>
+<div class="spc1">
+<p><code> ```{r mychunkname, echo = FALSE}<br> library(knitr)<br> pass_scores &lt;- read.csv(“<a href="https://edin.ac/2wJgYwL" class="uri">https://edin.ac/2wJgYwL</a>”)<br> kable(table(pass_scores$school))<br> ``` </code><br></p>
+</div>
+<p>&lt;/div&gt;</p>
+<p>&lt;div style=“display: inline-block; max-width: 45%; vertical-align: top;”&gt;</p>
+<div class="spc1">
+<p><code> ```{r mychunkname2, echo = FALSE}<br> barplot(table(pass_scores$school))<br> ``` </code><br></p>
+</div>
+<p>&lt;/div&gt;</p>
+</section>
+<section id="will-compile-to-this" class="panel">
+<h4>Will compile to this:</h4>
+<div>
+<div style="display: inline-block; max-width: 45%; vertical-align: top; margin: 10px">
+<div class="layout-chunk" data-layout="l-body">
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Var1</th>
+<th style="text-align: right;">Freq</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">ECA</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Economics</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">GeoSciences</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">LAW</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">PPLS</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">SLLC</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">SSPS</td>
+<td style="text-align: right;">2</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div style="display: inline-block; max-width: 45%; vertical-align: top; margin: 10px">
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="06-figs_files/figure-html5/unnamed-chunk-15-1.png" width="624" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+</div>
+</section>
 </div>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->

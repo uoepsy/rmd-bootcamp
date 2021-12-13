@@ -216,3 +216,66 @@ barplot(table(penguins$species))
 ```{r fig.cap="a picture of a brain..."}
 include_graphics("https://edin.ac/37Ml3Q2")
 ```
+
+# Multiple Figures
+
+For arranging multiple plots created in GGplot, please see the [patchwork package](https://patchwork.data-imaginist.com/). It allows you to combine plots in various different ways. 
+
+# Figures \& Tables
+
+Arranging figures and tables side-by-side in RMarkdown can be a bit of a pain. 
+The easiest way (only when compiling to .html) is to include write some quick html code.  
+
+::: {.panelset}
+
+::: {.panel}
+#### Writing this:  
+
+\<div style="display: inline-block; max-width: 45%; vertical-align: top;"\>
+
+<div class="spc1"><code>
+&grave;&grave;&grave;{r mychunkname, echo = FALSE}<br>
+library(knitr)<br>
+pass_scores <- read.csv("https://edin.ac/2wJgYwL")<br>
+kable(table(pass_scores$school))<br>
+&grave;&grave;&grave;
+</code><br>
+</div>
+
+\</div\>
+
+\<div style="display: inline-block; max-width: 45%; vertical-align: top;"\>
+
+<div class="spc1">
+<code>
+&grave;&grave;&grave;{r mychunkname2, echo = FALSE}<br>
+barplot(table(pass_scores$school))<br>
+&grave;&grave;&grave;
+</code><br>
+</div>
+
+\</div\>
+
+:::
+
+::: {.panel}
+#### Will compile to this:  
+
+<div>
+<div style="display: inline-block; max-width: 45%; vertical-align: top; margin: 10px">
+```{r echo = FALSE}
+library(knitr)
+pass_scores <- read.csv("https://edin.ac/2wJgYwL")
+kable(table(pass_scores$school))
+```
+</div>
+<div style="display: inline-block; max-width: 45%; vertical-align: top; margin: 10px">
+```{r echo=FALSE}
+barplot(table(pass_scores$school))
+```
+</div>
+</div>
+
+:::
+
+:::
